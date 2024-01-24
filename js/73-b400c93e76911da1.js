@@ -1192,7 +1192,7 @@
       function p() {
         let n = (0, o._)([
           "\n  display: none;\n\n  @media ",
-          " {\n    display: none;\n    justify-content: flex-end;\n  }\n\n  & div {\n    width: 4.8rem;\n    height: 4.8rem;\n    background: #ffffff;\n    border-radius: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n\n    & svg {\n      width: 2.4rem;\n      height: 2.4rem;\n    }\n  }\n",
+          " {\n    display: none;\n    justify-content: flex-end;\n  }\n\n  & div {\n    width: 4.8rem;\n    height: 4.8rem;\n    background: #ffffff;\n    border-radius: 100%;\n    display: none;\n    justify-content: center;\n    align-items: center;\n\n    & svg {\n      width: 2.4rem;\n      height: 2.4rem;\n    }\n  }\n",
         ]);
         return (
           (p = function () {
