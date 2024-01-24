@@ -1860,8 +1860,8 @@
           ";\n  border-top: 0.2rem solid rgba(255, 255, 255, 0.15);\n  padding: ",
           " ",
           " ",
-          ';\n  background-image: url("/images/footer-bg.png");\n  background-size: 100% 100%;\n  background-position: bottom bottom;\n  background-repeat: no-repeat;\n\n  @media ',
-          ' {\n    background-image: url("/images/footer-bg-mobile.png");\n    background-position: bottom center;\n    margin-top: 10.4rem;\n    padding: 4.8rem 1.6rem 9.4rem;\n  }\n',
+          ';\n  background-image: url("images/footer-bg.png");\n  background-size: 100% 100%;\n  background-position: bottom bottom;\n  background-repeat: no-repeat;\n\n  @media ',
+          ' {\n    background-image: url("images/footer-bg-mobile.png");\n    background-position: bottom center;\n    margin-top: 10.4rem;\n    padding: 4.8rem 1.6rem 9.4rem;\n  }\n',
         ]);
         return (
           (nf = function () {
