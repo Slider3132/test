@@ -2888,23 +2888,23 @@
                         },
                       },
                       children: [
-                        { logo: "/images/partners/1.svg" },
-                        { logo: "/images/partners/2.svg" },
-                        { logo: "/images/partners/3.svg" },
-                        { logo: "/images/partners/4.svg" },
-                        { logo: "/images/partners/5.svg" },
-                        { logo: "/images/partners/7.svg" },
-                        { logo: "/images/partners/8.svg" },
-                        { logo: "/images/partners/9.svg" },
-                        { logo: "/images/partners/10.svg" },
-                        { logo: "/images/partners/12.svg" },
-                        { logo: "/images/partners/13.svg" },
-                        { logo: "/images/partners/15.svg" },
-                        { logo: "/images/partners/17.svg" },
-                        { logo: "/images/partners/18.svg" },
-                        { logo: "/images/partners/19.svg" },
-                        { logo: "/images/partners/21.svg" },
-                        { logo: "/images/partners/22.svg" },
+                        { logo: "images/partners/1.svg" },
+                        { logo: "images/partners/2.svg" },
+                        { logo: "images/partners/3.svg" },
+                        { logo: "images/partners/4.svg" },
+                        { logo: "images/partners/5.svg" },
+                        { logo: "images/partners/7.svg" },
+                        { logo: "images/partners/8.svg" },
+                        { logo: "images/partners/9.svg" },
+                        { logo: "images/partners/10.svg" },
+                        { logo: "images/partners/12.svg" },
+                        { logo: "images/partners/13.svg" },
+                        { logo: "images/partners/15.svg" },
+                        { logo: "images/partners/17.svg" },
+                        { logo: "images/partners/18.svg" },
+                        { logo: "images/partners/19.svg" },
+                        { logo: "images/partners/21.svg" },
+                        { logo: "images/partners/22.svg" },
                       ].map((n, e) => {
                         let { logo: t } = n;
                         return (0, i.jsx)(
@@ -4483,35 +4483,35 @@
                         children: [
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/1.png",
+                              src: "images/community/1.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/2.png",
+                              src: "images/community/2.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/3.png",
+                              src: "images/community/3.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/4.png",
+                              src: "images/community/4.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/5.png",
+                              src: "images/community/5.png",
                               alt: "",
                               fill: !0,
                             }),
@@ -4522,35 +4522,35 @@
                         children: [
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/1.png",
+                              src: "/mages/community/1.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/2.png",
+                              src: "images/community/2.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/3.png",
+                              src: "images/community/3.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/4.png",
+                              src: "images/community/4.png",
                               alt: "",
                               fill: !0,
                             }),
                           }),
                           (0, i.jsx)(tJ, {
                             children: (0, i.jsx)(nl(), {
-                              src: "/images/community/5.png",
+                              src: "images/community/5.png",
                               alt: "",
                               fill: !0,
                             }),
