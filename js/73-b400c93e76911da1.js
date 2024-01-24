@@ -2811,7 +2811,7 @@
               (0, i.jsx)(en, {
                 ref: c,
                 children: (0, i.jsx)(nl(), {
-                  src: "/images/hero-animated2.webp",
+                  src: "images/hero-animated2.webp",
                   alt: "Vita Inu",
                   priority: !0,
                   fill: !0,
