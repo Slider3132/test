@@ -1,5 +1,5 @@
 import * as THREE from './modules/vite1/deps/three.js?v=a5859036';
-import { A, D, DIRECTIONS, S, W } from '/utils.js';
+import { A, D, DIRECTIONS, S, W } from './utils.js';
 
 export class CharacterControls {
   constructor(
