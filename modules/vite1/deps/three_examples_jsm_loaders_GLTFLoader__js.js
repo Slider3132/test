@@ -62,7 +62,7 @@ import {
   Vector2,
   Vector3,
   VectorKeyframeTrack,
-} from './modules/vite1/deps/chunk-BYJ7EWHE.js?v=a5859036';
+} from './modules/vite1/deps/chunk-BYJ7EWHE.js';
 
 // modules/three/examples/jsm/utils/BufferGeometryUtils.js
 function toTrianglesDrawMode(geometry, drawMode) {

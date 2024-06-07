@@ -6,7 +6,7 @@ import {
   TOUCH,
   Vector2,
   Vector3,
-} from './modules/vite1/deps/chunk-BYJ7EWHE.js?v=a5859036';
+} from './modules/vite1/deps/chunk-BYJ7EWHE.js';
 
 // modules/three/examples/jsm/controls/OrbitControls.js
 var _changeEvent = { type: 'change' };

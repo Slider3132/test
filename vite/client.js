@@ -1,4 +1,4 @@
-import './modules/vite/dist/client/env.mjs';
+import '../modules/vite/dist/client/env.mjs';
 
 const base$1 = '/' || '/';
 // set :host styles to make playwright detect the element as visible
