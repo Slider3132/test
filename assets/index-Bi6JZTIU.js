@@ -10845,7 +10845,7 @@ const ButtonMenu = ({ handleDrawer: e }) => {
               onMouseEnter: () => i(!0),
               onMouseLeave: () => i(!1),
               children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './X.svg',
+                src: './assets/X.svg',
                 alt: 'Logo',
                 className: 'w-4 lg:w-6 xl:w-10',
                 visibleByDefault: !0,
@@ -10865,7 +10865,7 @@ const ButtonMenu = ({ handleDrawer: e }) => {
               onMouseEnter: () => a(!0),
               onMouseLeave: () => a(!1),
               children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './Telegram.svg',
+                src: './assets/Telegram.svg',
                 alt: 'Logo',
                 className: 'w-6 lg:w-8 xl:w-10',
                 visibleByDefault: !0,
@@ -11137,7 +11137,7 @@ const RunningText = () =>
         'w-full h-14 xl:h-24 relative  xl:left-0 items-center justify-center overflow-hidden z-[2]',
       children: [
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './walking-banner.webp',
+          src: './assets/walking-banner.webp',
           alt: 'Logo',
           className: 'absolute inset-0 w-full h-full object-cover -z-10',
         }),
@@ -11205,7 +11205,7 @@ const RunningText = () =>
             e ? 'transform translate-y-0 top-0' : 'transform -translate-y-full '
           }`,
           children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-            src: './walking-banner.webp',
+            src: './assets/walking-banner.webp',
             alt: 'How to Get',
             className: 'object-cover splash-bg relative h-full w-full -z-10',
           }),
@@ -11218,8 +11218,8 @@ const RunningText = () =>
                   'flex items-center justify-between px-16 fixed w-full bg-transparent z-50 ',
                 children: [
                   jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                    src: './mosk.svg',
-                    // src: './logo-white.svg',
+                    src: './assets/mosk.svg',
+                    // src: './assets/logo-white.svg',
                     alt: 'Logo',
                     visibleByDefault: !0,
                     className: 'logoB',
@@ -11237,7 +11237,7 @@ const RunningText = () =>
                           children: jsxRuntimeExports.jsx(
                             buildExports.LazyLoadImage,
                             {
-                              src: './close-btn.svg',
+                              src: './assets/close-btn.svg',
                               alt: 'Logo',
                               width: 26,
                               height: 26,
@@ -11324,12 +11324,12 @@ const RunningText = () =>
                     className: 'flex w-[10rem] relative items-center ml-1',
                     children: [
                       jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                        src: './mosk-pic.webp',
+                        src: './assets/mosk-pic.webp',
                         alt: 'Logo',
                         className: 'absolute w-[6rem] -top-2 z-10',
                       }),
                       jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                        src: './mosk.svg',
+                        src: './assets/mosk.svg',
                         alt: 'Logo',
                         className: 'absolute w-[8rem] left-16',
                       }),
@@ -11344,7 +11344,7 @@ const RunningText = () =>
                       children: jsxRuntimeExports.jsx(
                         buildExports.LazyLoadImage,
                         {
-                          src: './close-btn.svg',
+                          src: './assets/close-btn.svg',
                           alt: 'Logo',
                           width: 26,
                           height: 26,
@@ -11470,7 +11470,7 @@ const RunningText = () =>
                       'flex items-center justify-around mt-6 px-1 fixed w-full bg-transparent z-50 header-container',
                     children: [
                       jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                        src: './logo.webp',
+                        src: './assets/logo.webp',
                         alt: 'Logo',
                         width: e ? 84 : 267,
                         height: e ? 38 : 76,
@@ -11499,7 +11499,7 @@ const RunningText = () =>
                     children: [
                       jsxRuntimeExports.jsx(ButtonMenu, { handleDrawer: j }),
                       jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                        src: './logo.webp',
+                        src: './assets/logo.webp',
                         alt: 'Logo',
                         width: 267,
                         height: 76,
@@ -11547,14 +11547,14 @@ const RunningText = () =>
         'flex relative items-center h-[50vh] lg:h-[calc(200vh+100px)] mt-40 lg:mt-24 justify-center z-[2] ',
       children: [
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './hero-bg.png',
+          src: './assets/hero-bg.png',
           className: 'absolute top-20 lg:top-36 xl:top-72',
           alt: 'Hero',
           width: e ? 450 : '',
           visibleByDefault: !0,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './frame-3-img.png',
+          src: './assets/frame-3-img.png',
           className:
             'absolute z-10 top-16 lg:top-32 animate-main-c xl:w-[60rem] xl:top-[40rem]',
           alt: 'Hero',
@@ -11562,7 +11562,7 @@ const RunningText = () =>
           visibleByDefault: !0,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './ufo.png',
+          src: './assets/ufo.png',
           className:
             'absolute z-10 -left-6 lg:left-0 top-40 lg:top-56 animate-ufo  xl:w-[60rem]  xl:top-[40rem]',
           alt: 'Hero',
@@ -11570,7 +11570,7 @@ const RunningText = () =>
           visibleByDefault: !0,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './rocket.png',
+          src: './assets/rocket.png',
           className:
             'absolute z-10 right-0 top-40 lg:top-56 animate-rocket xl:w-[60rem]  xl:top-[40rem]',
           alt: 'Hero',
@@ -11578,14 +11578,14 @@ const RunningText = () =>
           visibleByDefault: !0,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './coin-tesla.png',
+          src: './assets/coin-tesla.png',
           className:
             'absolute top-10 lg:top-28 left-16 lg:left-1/4 xl:w-[16rem]  xl:top-[30rem]',
           alt: 'Hero',
           width: e ? 60 : '',
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './coin-sol.png',
+          src: './assets/coin-sol.png',
           className:
             'absolute top-10 lg:top-28 right-16 lg:right-1/4 xl:w-[16rem]  xl:top-[30rem]',
           alt: 'Hero',
@@ -11604,7 +11604,7 @@ const RunningText = () =>
             ' lg:w-[1000px] xl:h-[50rem]  xl:w-[100rem] xl:rounded-[3rem]  w-[350px] h-[170px] lg:h-[420px]  flex items-center justify-center relative  bg-[#113a3a] rounded-xl lg:rounded-3xl',
           children: [
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './border-1.webp',
+              src: './assets/border-1.webp',
               alt: 'About',
               className:
                 'relative w-full h-full object-cover rounded-3xl xl:rounded-[3rem] ',
@@ -11617,7 +11617,7 @@ const RunningText = () =>
           ],
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './border-2.webp',
+          src: './assets/border-2.webp',
           alt: 'Logo',
           className:
             'absolute rounded-xl xl:h-[50rem]  xl:w-[100rem] xl:rounded-[3rem] lg:rounded-3xl -z-[1] -translate-y-20 -translate-x-20 lg:-translate-y-36 lg:-translate-x-36 box-child-5',
@@ -11625,7 +11625,7 @@ const RunningText = () =>
           height: e ? 200 : 420,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './border-4.webp',
+          src: './assets/border-4.webp',
           alt: 'Logo',
           className:
             'absolute rounded-xl xl:h-[50rem]  xl:w-[100rem] xl:rounded-[3rem] lg:rounded-3xl -z-[1] -translate-y-16 -translate-x-16 lg:-translate-y-28 lg:-translate-x-28 box-child-4',
@@ -11633,7 +11633,7 @@ const RunningText = () =>
           height: e ? 200 : 420,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './border-3.webp',
+          src: './assets/border-3.webp',
           alt: 'Logo',
           className:
             'absolute rounded-xl xl:h-[50rem]  xl:w-[100rem]   xl:rounded-[3rem] lg:rounded-3xl -z-[1] -translate-x-12 -translate-y-12 lg:-translate-y-20 lg:-translate-x-20 box-child-3',
@@ -11641,7 +11641,7 @@ const RunningText = () =>
           height: e ? 200 : 420,
         }),
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './border-2.webp',
+          src: './assets/border-2.webp',
           alt: 'Logo',
           className:
             'absolute rounded-xl xl:h-[50rem]  xl:w-[100rem]  xl:rounded-[3rem] lg:rounded-3xl -z-[1] -translate-x-6 -translate-y-6 lg:-translate-y-12  lg:-translate-x-12 box-child-2',
@@ -12362,7 +12362,7 @@ const Aos = getDefaultExportFromCjs(aosExports),
           'data-aos': 'fade-left',
           children: [
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './contract-rocket.webp',
+              src: './assets/contract-rocket.webp',
               alt: 'Logo',
               width: 1e3,
               height: 420,
@@ -12377,7 +12377,7 @@ const Aos = getDefaultExportFromCjs(aosExports),
               children: [
                 'CONTRACT: MAX...KMiHj',
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './copy-img.svg',
+                  src: './assets/copy-img.svg',
                   alt: 'Logo',
                   className: 'w-[0.7rem] lg:w-[1.5rem] xl:w-16',
                   visibleByDefault: !0,
@@ -12453,7 +12453,7 @@ const Aos = getDefaultExportFromCjs(aosExports),
           'relative w-full h-[50vh] lg:h-[130vh] top-24 lg:-top-36 z-10 ',
         children: [
           jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-            src: './television.webp',
+            src: './assets/television.webp',
             alt: 'Logo',
             width: 1284,
             height: 1284,
@@ -12468,12 +12468,12 @@ const Aos = getDefaultExportFromCjs(aosExports),
        overflow-hidden lg:left-1/2 transform top-0 lg:-translate-x-[34.5em]  lg:-translate-y-[80rem] z-0`,
             children: [
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './tv-bg.webp',
+                src: './assets/tv-bg.webp',
                 alt: 'Logo',
                 className: 'absolute -z-10 w-full animate-bg-tv  ',
               }),
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './tv-corner.svg',
+                src: './assets/tv-corner.svg',
                 alt: 'Logo',
                 className: 'absolute -z-10 top-2 left-2 xl:w-[10rem]',
                 width: e ? 50 : '',
@@ -13205,7 +13205,7 @@ const Maxonomics = ({ isMobile: e }) => (
                 from: e ? 0 : -800,
                 to: e ? 0 : 360,
                 children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './circle-mc.webp',
+                  src: './assets/circle-mc.webp',
                   className: 'relative xl:w-[120rem]',
                   alt: 'Logo',
                   width: 1e3,
@@ -13214,7 +13214,7 @@ const Maxonomics = ({ isMobile: e }) => (
               }),
             e &&
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './circle-mc.webp',
+                src: './assets/circle-mc.webp',
                 className: 'relative xl:w-[120rem] rotating-mc',
                 alt: 'Logo',
                 width: 1e3,
@@ -13348,7 +13348,7 @@ const Maxonomics = ({ isMobile: e }) => (
         'w-full relative flex items-center flex-col xl:h-auto lg:h-auto mt-0 lg:mt-72 overflow-hidden z-[2]',
       children: [
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './title-how.png',
+          src: './assets/title-how.png',
           alt: 'How to Get',
           width: e ? 362 : 640,
           height: 362,
@@ -13369,14 +13369,14 @@ const Maxonomics = ({ isMobile: e }) => (
             } h-[260px] lg:h-[560px] xl:h-[60rem] xl:gap-32 xl:w-auto w-full rounded`,
             children: [
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './step-1.webp',
+                src: './assets/step-1.webp',
                 alt: 'How to Get',
                 visibleByDefault: !0,
                 className:
                   'object-cover mx-8 hover:scale-110 hover:-rotate-2 transition duration-300 ease-in-out',
               }),
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './step-2.webp',
+                src: './assets/step-2.webp',
                 alt: 'How to Get',
                 visibleByDefault: !0,
                 className:
@@ -13384,21 +13384,21 @@ const Maxonomics = ({ isMobile: e }) => (
               }),
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
                 onClick: d,
-                src: './step-5.webp',
+                src: './assets/step-5.webp',
                 alt: 'How to Get',
                 visibleByDefault: !0,
                 className:
                   'object-cover mx-8 hover:scale-110 hover:-rotate-2 transition duration-300 ease-in-out ',
               }),
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './step-3.webp',
+                src: './assets/step-3.webp',
                 alt: 'How to Get',
                 visibleByDefault: !0,
                 className:
                   'object-cover mx-8  hover:scale-110 hover:rotate-2 transition duration-300 ease-in-out',
               }),
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './step-4.webp',
+                src: './assets/step-4.webp',
                 alt: 'How to Get',
                 visibleByDefault: !0,
                 className:
@@ -13420,7 +13420,7 @@ const Maxonomics = ({ isMobile: e }) => (
         'flex relative items-center flex-col w-full justify-center xl:h-auto h-auto  overflow-hidden z-[2] pb-20',
       children: [
         jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-          src: './title-plans.png',
+          src: './assets/title-plans.png',
           alt: 'How to Get',
           className: 'relative my-20 lg:mb-56 xl:w-[80rem]',
           width: 740,
@@ -13443,35 +13443,35 @@ const Maxonomics = ({ isMobile: e }) => (
               }),
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './frame-1.png',
+              src: './assets/frame-1.png',
               alt: 'How to Get',
               className: ' absolute lg:left-28 xl:w-[65rem] ',
               width: e ? 350 : 550,
               visibleByDefault: !0,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-1.webp',
+              src: './assets/shadow-1.webp',
               alt: 'How to Get',
               className:
                 'absolute -top-12 -left-14 lg:left-8 xl:w-[65rem]  -z-[1] border-child-1 ',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-2.webp',
+              src: './assets/shadow-2.webp',
               alt: 'How to Get',
               className:
                 ' absolute  -top-6 -left-8 lg:left-16 xl:w-[65rem] -z-[1] border-child-2',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-3.webp',
+              src: './assets/shadow-3.webp',
               alt: 'How to Get',
               className:
                 ' absolute -z-[1]  lg:left-20 border-child-3 xl:w-[65rem]',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './frame-1-img.webp',
+              src: './assets/frame-1-img.webp',
               alt: 'How to Get',
               className:
                 'object-cover absolute left-[30%]  xl:w-[50rem] z-20 ufo-animation ',
@@ -13496,27 +13496,27 @@ const Maxonomics = ({ isMobile: e }) => (
               }),
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './frame-2.png',
+              src: './assets/frame-2.png',
               alt: 'How to Get',
               className: 'absolute right-0 lg:right-28  xl:w-[80rem]',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-3.webp',
+              src: './assets/shadow-3.webp',
               alt: 'How to Get',
               className:
                 'absolute -right-16 -top-12 lg:right-8  xl:w-[80rem] -z-[1] right-box-1  ',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-2.webp',
+              src: './assets/shadow-2.webp',
               alt: 'How to Get',
               className:
                 ' absolute -right-8 -top-6 lg:right-16  xl:w-[80rem] -z-[1] right-box-2',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-1.webp',
+              src: './assets/shadow-1.webp',
               alt: 'How to Get',
               className:
                 ' absolute right-0 lg:right-20  xl:w-[80rem]  -z-[1] right-box-3',
@@ -13541,34 +13541,34 @@ const Maxonomics = ({ isMobile: e }) => (
               }),
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './frame-3.png',
+              src: './assets/frame-3.png',
               alt: 'How to Get',
               className: ' absolute left-0   xl:w-[80rem]  lg:left-28 ',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-1.webp',
+              src: './assets/shadow-1.webp',
               alt: 'How to Get',
               className:
                 'absolute -top-12 -left-14 lg:left-8  xl:w-[80rem] -z-[1] border-child-1 ',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-3.webp',
+              src: './assets/shadow-3.webp',
               alt: 'How to Get',
               className:
                 ' absolute -top-6 -left-8 -z-[1] lg:left-16  xl:w-[80rem] border-child-2',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-2.webp',
+              src: './assets/shadow-2.webp',
               alt: 'How to Get',
               className:
                 'absolute left-0 -z-[1] lg:left-20  xl:w-[80rem] border-child-3',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './main-c.webp',
+              src: './assets/main-c.webp',
               alt: 'How to Get',
               className:
                 'absolute left-[30%] -top-[100%]  xl:-top-96 xl:left-[35%]  xl:w-[60rem] z-20 rocket-animation ',
@@ -13592,34 +13592,34 @@ const Maxonomics = ({ isMobile: e }) => (
               }),
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './frame-4.png',
+              src: './assets/frame-4.png',
               alt: 'How to Get',
               className: 'absolute right-0 lg:right-28  xl:w-[80rem]  ',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-1.webp',
+              src: './assets/shadow-1.webp',
               alt: 'How to Get',
               className:
                 'absolute -right-16 -top-12 lg:right-8 -z-[1] right-box-1  xl:w-[80rem] ',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-2.webp',
+              src: './assets/shadow-2.webp',
               alt: 'How to Get',
               className:
                 'absolute -right-8 -top-6 -z-[1] lg:right-16 right-box-2  xl:w-[80rem]',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './shadow-3.webp',
+              src: './assets/shadow-3.webp',
               alt: 'How to Get',
               className:
                 'absolute right-0 -z-[1] lg:right-20 right-box-3  xl:w-[80rem]',
               width: e ? 350 : 550,
             }),
             jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './frame-4-img.webp',
+              src: './assets/frame-4-img.webp',
               alt: 'How to Get',
               className:
                 'absolute -top-[90%] z-20 lg:right-96 globe-animation xl:right-[35%] xl:-top-32 xl:w-[55rem]',
@@ -13644,32 +13644,32 @@ const Maxonomics = ({ isMobile: e }) => (
                   }),
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-5-mobile.png',
+                  src: './assets/frame-5-mobile.png',
                   alt: 'How to Get',
                   className: 'absolute ',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './shadow-1.webp',
+                  src: './assets/shadow-1.webp',
                   alt: 'How to Get',
                   className:
                     'absolute -top-12 -left-14  -z-[1] border-child-1 ',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './shadow-2.webp',
+                  src: './assets/shadow-2.webp',
                   alt: 'How to Get',
                   className: 'absolute  -top-6 -left-8  -z-[1] border-child-2',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './shadow-3.webp',
+                  src: './assets/shadow-3.webp',
                   alt: 'How to Get',
                   className: 'absolute -z-[1]   border-child-3',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-5-img.webp',
+                  src: './assets/frame-5-img.webp',
                   alt: 'How to Get',
                   className: 'absolute top-32 mt-4 z-20 lab-animation ',
                 }),
@@ -13692,34 +13692,34 @@ const Maxonomics = ({ isMobile: e }) => (
                   }),
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-5.png',
+                  src: './assets/frame-5.png',
                   alt: 'How to Get',
                   className: 'absolute left-28  xl:w-[100rem]',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-long-1.webp',
+                  src: './assets/frame-long-1.webp',
                   alt: 'How to Get',
                   className:
                     'absolute -top-12 -left-14 lg:left-8 -z-[1] border-child-1 xl:w-[100rem] ',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-long-2.webp',
+                  src: './assets/frame-long-2.webp',
                   alt: 'How to Get',
                   className:
                     ' absolute -top-6 -left-8 -z-[1] lg:left-16 border-child-2 xl:w-[100rem]',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-long-3.webp',
+                  src: './assets/frame-long-3.webp',
                   alt: 'How to Get',
                   className:
                     'absolute left-0 -z-[1] lg:left-20  border-child-3 xl:w-[100rem]',
                   width: e ? 350 : '',
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './frame-5-img.webp',
+                  src: './assets/frame-5-img.webp',
                   alt: 'How to Get',
                   className:
                     'absolute right-48 z-20 lab-animation xl:right-[15%] xl:w-[60rem]',
@@ -13750,7 +13750,7 @@ const Maxonomics = ({ isMobile: e }) => (
               children: jsxRuntimeExports.jsx('div', {
                 className: 'w-full h-full',
                 children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './meme-1.webp',
+                  src: './assets/meme-1.webp',
                   alt: 'How to Get',
                   className: 'object-cover ',
                   effect: 'blur',
@@ -13765,7 +13765,7 @@ const Maxonomics = ({ isMobile: e }) => (
               children: jsxRuntimeExports.jsx('div', {
                 className: '',
                 children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './meme-2.webp',
+                  src: './assets/meme-2.webp',
                   alt: 'How to Get',
                   className: 'object-cover',
                   effect: 'blur',
@@ -13786,7 +13786,7 @@ const Maxonomics = ({ isMobile: e }) => (
                 children: [
                   ' ',
                   jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                    src: './meme-3.webp',
+                    src: './assets/meme-3.webp',
                     alt: 'How to Get',
                     className: 'object-cover',
                     effect: 'blur',
@@ -13802,7 +13802,7 @@ const Maxonomics = ({ isMobile: e }) => (
               children: jsxRuntimeExports.jsx('div', {
                 className: '',
                 children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './meme-4.webp',
+                  src: './assets/meme-4.webp',
                   alt: 'How to Get',
                   className: 'object-cover',
                   effect: 'blur',
@@ -13823,7 +13823,7 @@ const Maxonomics = ({ isMobile: e }) => (
                 children: [
                   ' ',
                   jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                    src: './meme-5.webp',
+                    src: './assets/meme-5.webp',
                     alt: 'How to Get',
                     className: 'object-cover',
                     effect: 'blur',
@@ -13841,7 +13841,7 @@ const Maxonomics = ({ isMobile: e }) => (
                 children: [
                   ' ',
                   jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                    src: './meme-6.webp',
+                    src: './assets/meme-6.webp',
                     alt: 'How to Get',
                     className: 'object-cover',
                     effect: 'blur',
@@ -13866,7 +13866,7 @@ const Maxonomics = ({ isMobile: e }) => (
         className: 'h-full lg:h-auto w-full relative overflow-hidden -z-10',
         children: [
           jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-            src: './contact-bg.webp',
+            src: './assets/contact-bg.webp',
             alt: 'Logo',
             className: 'object-cover absolute h-full w-full  ',
           }),
@@ -13882,7 +13882,7 @@ const Maxonomics = ({ isMobile: e }) => (
             className:
               'flex lg:top-32 justify-center items-center w-full mt-16 z-10 lg:translate-x-10 relative',
             children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-              src: './contact-group.webp',
+              src: './assets/contact-group.webp',
               alt: 'Logo',
               className: 'relative contact-group-animation z-10  xl:w-[65rem] ',
             }),
@@ -13892,14 +13892,14 @@ const Maxonomics = ({ isMobile: e }) => (
               'flex justify-between items-center -top-32 translate-y-32 z-0 relative',
             children: [
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './left-rocket.webp',
+                src: './assets/left-rocket.webp',
                 alt: 'Logo',
                 className: 'relative  xl:w-[35rem] xl:left-72   ',
                 width: e ? 160 : '',
                 visibleByDefault: !0,
               }),
               jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                src: './right-rocket.webp',
+                src: './assets/right-rocket.webp',
                 alt: 'Logo',
                 className: 'relative  xl:w-[35rem] xl:right-72   ',
                 width: e ? 160 : '',
@@ -13925,7 +13925,7 @@ const Maxonomics = ({ isMobile: e }) => (
                     children: jsxRuntimeExports.jsx(
                       buildExports.LazyLoadImage,
                       {
-                        src: './x-logo.svg',
+                        src: './assets/x-logo.svg',
                         alt: 'Logo',
                         className:
                           'relative xl:w-[12rem] cursor-pointer hover:-rotate-12 hover:scale-110 transition-transform duration-500 ease-in-out',
@@ -13938,7 +13938,7 @@ const Maxonomics = ({ isMobile: e }) => (
                     children: jsxRuntimeExports.jsx(
                       buildExports.LazyLoadImage,
                       {
-                        src: './telegram-logo.svg',
+                        src: './assets/telegram-logo.svg',
                         alt: 'Logo',
                         className:
                           'relative xl:w-[12rem] cursor-pointer hover:rotate-6 hover:scale-110 transition-transform duration-500 ease-in-out ',
@@ -13951,7 +13951,7 @@ const Maxonomics = ({ isMobile: e }) => (
                     children: jsxRuntimeExports.jsx(
                       buildExports.LazyLoadImage,
                       {
-                        src: './sol-logo.svg',
+                        src: './assets/sol-logo.svg',
                         alt: 'Logo',
                         className:
                           'relative xl:w-[12rem] cursor-pointer hover:-rotate-12 hover:scale-110 transition-transform duration-500 ease-in-out  ',
@@ -13986,7 +13986,7 @@ const Maxonomics = ({ isMobile: e }) => (
             className: 'h-full w-full bg-[#110f40]  absolute',
           }),
           jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-            src: './contact-group.webp',
+            src: './assets/contact-group.webp',
             alt: 'Logo',
             className:
               'absolute z-[9999] w-[35rem] top-0 left-4 lg:left-auto xl:w-[70rem]',
@@ -14050,7 +14050,7 @@ const Maxonomics = ({ isMobile: e }) => (
                 className:
                   'lg:flex hidden absolute overflow-hidden justify-center w-[70%] rounded-3xl border-4 border-neutral-50 h-[90%]  bg-neutral-50',
                 children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './bg-splashh.webp',
+                  src: './assets/bg-splashh.webp',
                   alt: 'Logo',
                   className: `object-cover ${
                     o ? 'splash-bg' : ''
@@ -14061,7 +14061,7 @@ const Maxonomics = ({ isMobile: e }) => (
                 className:
                   'flex absolute overflow-hidden justify-center w-[90%] rounded-lg border-4 border-neutral-50 h-3/4 lg:hidden  bg-neutral-50',
                 children: jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './splash-mobile.webp',
+                  src: './assets/splash-mobile.webp',
                   alt: 'Logo',
                   className:
                     'object-cover w-full splash-bg z-[999] opacity-100 block lg:hidden',
@@ -14707,7 +14707,7 @@ const ReactAudioPlayer = getDefaultExportFromCjs(bundle),
                     jsxRuntimeExports.jsx(
                       'img',
                       {
-                        src: './sparkle.webp',
+                        src: './assets/sparkle.webp',
                         alt: 'Sparkle',
                         className: 'sparkle',
                         style: {
@@ -14726,7 +14726,7 @@ const ReactAudioPlayer = getDefaultExportFromCjs(bundle),
                   ),
                 }),
                 jsxRuntimeExports.jsx(buildExports.LazyLoadImage, {
-                  src: './body-bg.svg',
+                  src: './assets/body-bg.svg',
                   alt: 'Logo',
                   className:
                     '-z-10 absolute object-cover w-full h-full background-image',
@@ -14734,7 +14734,7 @@ const ReactAudioPlayer = getDefaultExportFromCjs(bundle),
               ],
             }),
             jsxRuntimeExports.jsx(ReactAudioPlayer, {
-              src: './audio-mosk.mp3',
+              src: './assets/audio-mosk.mp3',
               autoPlay: !0,
               loop: !0,
             }),
